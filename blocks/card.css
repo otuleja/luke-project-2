@@ -27,6 +27,7 @@
   margin: 0;
 }
 .card__like-button {
+  background: transparent url(../images/like-button-active.svg) center no-repeat;
   border-style: none;
   background-color: inherit;
   margin: 0;
@@ -34,6 +35,5 @@
   transition: opacity 0.35s;
 }
 .card__like-button:hover {
-  background: transparent url(../images/like-button-active.svg) center no-repeat;
   opacity: 0.5;
 }
