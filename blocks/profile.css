@@ -15,8 +15,8 @@
 .profile__grid {
   display: grid;
   grid-template-areas:
-    "title title pencil . . ."
-    "subheading subheading subheading . . . ";
+    "title title pencil"
+    "subheading subheading subheading";
   align-items: center;
   gap: 20px;
 }
