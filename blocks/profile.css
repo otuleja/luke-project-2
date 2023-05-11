@@ -32,6 +32,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  margin-left: 30px;
 }
 .profile__subheading {
   max-width: 100%;
@@ -45,6 +46,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  margin-left: 30px;
 }
 .profile__edit-button {
   background: transparent url(../images/edit-icon.svg);
@@ -86,7 +88,7 @@
     flex-direction: column;
     align-items: center;
     margin-top: 0;
-    margin-bottom: 30px;
+    margin-bottom: 22px;
   }
   .profile__grid {
     text-align: center;
@@ -103,7 +105,6 @@
     font-size: 14px;
     margin: 0 auto;
     line-height: 17px;
-    margin-top: 14px;
   }
   .profile__add-button {
     max-width: 100%;
