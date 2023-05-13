@@ -1,11 +1,16 @@
 .profile {
   display: flex;
   flex-direction: row;
-  align-items: center;
   margin: 0 auto;
   margin-top: 36.25px;
   margin-bottom: 47.25px;
 }
+
+#profile-container {
+  align-items: center;
+  display: flex;
+}
+
 .profile__image {
   border-radius: 50%;
   width: 120px;
@@ -20,6 +25,7 @@
     "subheading subheading subheading";
   align-items: center;
   gap: 20px;
+  height: 77px;
 }
 .profile__title {
   font-family: "Inter", Helvetica, sans-serif;
@@ -89,7 +95,8 @@
     flex-direction: column;
     align-items: center;
     margin-top: 0;
-    margin-bottom: 22px;
+    margin-bottom: 12px;
+    max-width: 282px;
   }
   .profile__grid {
     text-align: center;
