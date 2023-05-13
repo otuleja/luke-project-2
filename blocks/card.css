@@ -33,7 +33,7 @@
   cursor: pointer;
   transition: opacity 0.35s;
   background: transparent url("./images/like-button-inactive.svg");
-]
+}
 
 .card__like-button:hover {
   opacity: 0.5;
