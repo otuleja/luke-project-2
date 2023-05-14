@@ -8,11 +8,10 @@
   gap: 20px 17px;
   justify-content: center;
 }
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 590px) {
   .cards__list {
     flex-direction: column;
     gap: 20px;
     align-items: center;
-    padding-top: 36px;
   }
 }
