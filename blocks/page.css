@@ -9,7 +9,7 @@
   width: 100%;
   margin: 0 auto;
 }
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 590px) {
   .page__section {
     max-width: 100%;
   }
