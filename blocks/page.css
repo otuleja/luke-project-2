@@ -1,5 +1,8 @@
 .page {
   background-color: black;
+}
+
+.page__content {
   color: white;
 }
 

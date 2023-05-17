@@ -22,7 +22,7 @@
   margin: 0;
   align-self: center;
 }
-.profile__grid {
+.profile__info {
   display: grid;
   grid-template-areas:
     "title title pencil"
@@ -45,7 +45,7 @@
   overflow: hidden;
   margin-left: 30px;
 }
-.profile__subheading {
+.profile__description {
   max-width: 100%;
   font-family: "Inter", Helvetica, sans-serif;
   font-style: normal;
@@ -109,7 +109,7 @@
     margin-bottom: 0;
   }
 
-  .profile__grid {
+  .profile__info {
     text-align: center;
     padding-top: 26.25px;
     max-height: 50px;
@@ -121,7 +121,7 @@
     margin: 0 auto;
     line-height: 27px;
   }
-  .profile__subheading {
+  .profile__description {
     width: 100%;
     font-size: 14px;
     margin: 0 auto;

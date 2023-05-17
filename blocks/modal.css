@@ -1,0 +1,138 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  display: flex;
+  padding: 0 19px;
+  max-width: 100%;
+  height: 100%;
+}
+
+.modal__container {
+  position: relative;
+  background-color: #fff;
+  margin: auto;
+  border-radius: 10px;
+  padding: 34px 36px 36px 36px;
+  max-width: 430px;
+  max-height: 330px;
+}
+
+.modal__close {
+  border: none;
+  background-color: transparent;
+  position: absolute;
+  bottom: calc(100% + 5px);
+  left: calc(100% + 5px);
+  width: 40px;
+  height: 40px;
+  background-image: url("../images/close.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  cursor: pointer;
+  padding: 0;
+}
+
+.modal__close:hover {
+  cursor: pointer;
+  opacity: 60%;
+}
+
+.modal__heading {
+  width: 330px;
+  height: 23px;
+  font: "Inter", Arial, helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29px;
+  color: #000;
+  margin: 0;
+  padding-bottom: 54px;
+}
+
+.modal__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 358px;
+}
+
+.modal__description {
+  font: "Inter", Arial, helvetica, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 17px;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 20%);
+  width: 100%;
+  height: 14px;
+  margin-top: 30px;
+  padding: 0px 0px 12px 0px;
+}
+
+.modal__description:first-child {
+  margin-top: 0;
+}
+
+.modal__button {
+    font: "Inter", Arial, helvetica, sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 22px;
+    text-align: center;
+    height: 50px;
+    background-color: #000;
+    color: #fff;
+    border-radius: 2px;
+    border: none;
+    margin-top: 48px;
+    width: 100%;
+    padding: 0;
+}
+
+.modal__button:hover {
+    cursor: pointer
+    opacity: 80%;
+}
+
+@media screen and max-width (600px) {
+  .modal__close {
+    bottom: calc(100% + 13px);
+    left: calc(100% - 30px);
+    height: 26px;
+    width: 26px;
+  }
+}
+
+.modal__container {
+max-width: 282px;
+max-height: 322px;
+padding: 25px 22px;
+}
+
+.modal__form {
+    width: 238px;
+}
+
+.modal__heading {
+width: 238px;
+padding-bottom: 75px;
+}
+
+.modal_open {
+    display: flex;
+}
+
+.modal__button {
+    margin-top: 45px;
+    font-size: 14px;
+    line-height: 17px;
+    height: 46px;
+}
