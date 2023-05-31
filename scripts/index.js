@@ -29,7 +29,7 @@ const initialCards = [
 
 const profileEditButton = document.querySelector(".profile__edit-button");
 const profileEditModal = document.querySelector("#profile-edit-modal");
-const modalExitButton = document.querySelector(".modal__close");
+const modalExitButton = document.querySelector("#modal-close-button");
 const profileTitle = document.querySelector(".profile__title");
 const profileDescription = document.querySelector(".profile__description");
 const profiletitleInput = document.querySelector("#modal-description-name");
@@ -37,6 +37,8 @@ const profileDescriptionInput = document.querySelector(
   "#modal-description-job"
 );
 const profileEditForm = profileEditModal.querySelector(".modal__form");
+const cardListEl = document.querySelector('.cards__list');
+const cardTemplate = document.querySelector('#card-template').textContent.firstElementChild;
 
 /* functions */
 
@@ -44,6 +46,19 @@ function closePopup() {
   profileEditModal.classList.remove("modal_opened");
 }
 
+function getCardElement(cardData) {
+//  clone the template element with all its content and store it in a cardElement variable
+const cardElement = cardTemplate.cloneNode(true);
+//  access the card title and image and store them in variables
+const cardImageEl = cardElement.querySelector(".card__image");
+const cardTitleEl = cardElement.querySelector('.card__title');
+//  set the path to the image to the link field of the object
+//  set the image alt text to the name field of the object
+//  set the card title to the name field of the object, too
+cardTitleEl.textContent = cardData.name;
+//  return the ready HTML element with the filled-in data
+return cardElement;
+}
 /* Event handlers */ 
 function handleProfileEditSubmit (e) => {
   e.preventDefault();
@@ -64,3 +79,8 @@ profileEditCloseButton.addEventListener("click", () => {
 });
 
 profileEditCloseButton.addEventListener("submit", handleProfileEditSubmit);
+
+initialCards.forEach((cardData) => {
+const cardElement = getCardElement
+cardListEl.prepend(cardElement);
+});
