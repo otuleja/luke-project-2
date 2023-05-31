@@ -37,8 +37,9 @@ const profileDescriptionInput = document.querySelector(
   "#modal-description-job"
 );
 const profileEditForm = profileEditModal.querySelector(".modal__form");
-const cardListEl = document.querySelector('.cards__list');
-const cardTemplate = document.querySelector('#card-template').textContent.firstElementChild;
+const cardListEl = document.querySelector(".cards__list");
+const cardTemplate =
+  document.querySelector("#card-template").textContent.firstElementChild;
 
 /* functions */
 
@@ -47,20 +48,20 @@ function closePopup() {
 }
 
 function getCardElement(cardData) {
-//  clone the template element with all its content and store it in a cardElement variable
-const cardElement = cardTemplate.cloneNode(true);
-//  access the card title and image and store them in variables
-const cardImageEl = cardElement.querySelector(".card__image");
-const cardTitleEl = cardElement.querySelector('.card__title');
-//  set the path to the image to the link field of the object
-//  set the image alt text to the name field of the object
-//  set the card title to the name field of the object, too
-cardTitleEl.textContent = cardData.name;
-//  return the ready HTML element with the filled-in data
-return cardElement;
+  //  clone the template element with all its content and store it in a cardElement variable
+  const cardElement = cardTemplate.cloneNode(true);
+  //  access the card title and image and store them in variables
+  const cardImageEl = cardElement.querySelector(".card__image");
+  const cardTitleEl = cardElement.querySelector(".card__title");
+  //  set the path to the image to the link field of the object
+  //  set the image alt text to the name field of the object
+  //  set the card title to the name field of the object, too
+  cardTitleEl.textContent = cardData.name;
+  //  return the ready HTML element with the filled-in data
+  return cardElement;
 }
-/* Event handlers */ 
-function handleProfileEditSubmit (e) => {
+/* Event handlers */
+function handleProfileEditSubmit(e) {
   e.preventDefault();
   profileTitle.textContent = profileTitleInput.value;
   profileDescription.textContent = profileDescriptionInput.value;
@@ -81,6 +82,6 @@ profileEditCloseButton.addEventListener("click", () => {
 profileEditCloseButton.addEventListener("submit", handleProfileEditSubmit);
 
 initialCards.forEach((cardData) => {
-const cardElement = getCardElement
-cardListEl.prepend(cardElement);
+  const cardElement = getCardElement;
+  cardListEl.prepend(cardElement);
 });
