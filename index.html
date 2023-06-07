@@ -41,11 +41,7 @@
         <section class="cards page__section">
           <ul class="cards__list">
             <li class="card">
-              <img
-                src="./images/yosemite-valley.jpg"
-                alt="Yosemite image"
-                class="card__image"
-              />
+              <img src="./images/yosemite-valley.jpg" class="card__image"  />
               <div class="card__description">
                 <h2 class="card__title">Yosemite Valley</h2>
                 <button class="card__like-button" type="button">
@@ -144,9 +140,9 @@
       </footer>
     </div>
 
-    <div class="modal" id="profile-edit-modal">
+    <div class="modal hidden" id="profile-edit-modal">
       <section class="modal__container">
-        <button class="modal__close" id="modal-close-button"></button>
+        <button type="button" class="modal__opened" id="modal-open"></button>
         <h2 class="modal__title">Edit Profile</h2>
         <form class="modal__form">
           <input
@@ -155,6 +151,7 @@
             name="title"
             type="text"
             placeholder="Name"
+            required
           />
           <input
             id="modal-description-job"
@@ -162,8 +159,9 @@
             name="job"
             type="text"
             placeholder="Description"
+            required
           />
-          <button class="modal__button">Save</button>
+          <button class="modal__button" type="button">Save</button>
         </form>
       </section>
     </div>
@@ -178,6 +176,6 @@
       </li>
     </template>
 
-    <script src="./scripts/index.js"></script>
+    <script src="./scripts/index.js" defer></script>
   </body>
 </html>
