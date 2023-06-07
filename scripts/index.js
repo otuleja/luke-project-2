@@ -25,9 +25,7 @@ const initialCards = [
   },
 ];
 
-//////// Dom Manipulation ////////
-
-/* Elements */
+// Elements //
 const profilePopup = document.querySelector(".profile-modal");
 const profileEditButton = document.querySelector(".profile__button-edit");
 const modalExitButton = document.querySelector(".modal__exit");
@@ -44,18 +42,16 @@ const cardListElement = document.querySelector(".cards");
 const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
 
-/////////////////////////
-
-/* Functions */
+// Functions //
 const openModal = function () {
   titleInput.value = profileTitle.textContent;
   jobInput.value = profileJob.textContent;
 
-  profilePopup.classList.add("modal_opened");
+  profilePopup.classList.add("modal__opened");
 };
 
 const closeModal = function () {
-  profilePopup.classList.remove("modal_opened");
+  profilePopup.classList.remove("modal__opened");
 };
 
 function handleProfileFormSubmit(evt) {
@@ -78,8 +74,7 @@ function getCardElement(cardData) {
   return cardElement;
 }
 
-/* Event Listeners */
-
+// Event Listeners //
 profileEditButton.addEventListener("click", openModal);
 
 modalExitButton.addEventListener("click", closeModal);
@@ -88,6 +83,5 @@ profileFormElement.addEventListener("submit", handleProfileFormSubmit);
 
 initialCards.forEach((cardData) => {
   const cardElement = getCardElement(cardData);
-  // return the ready HTML element with the filled-in data
   cardListElement.append(cardElement);
 });

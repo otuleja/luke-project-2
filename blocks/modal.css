@@ -131,6 +131,6 @@
   }
 }
 
-.modal_opened {
+.modal__opened {
   display: flex;
 }
