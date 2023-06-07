@@ -1,13 +1,13 @@
 .card {
-  border-radius: 10px;
-  overflow: hidden;
-  background-color: white;
-  color: black;
+  display: flex;
+  flex-wrap: wrap;
+  width: 282px;
 }
 
 .card__image {
   width: 282px;
   height: 282px;
+  border-radius: 10px 10px 0 0;
 }
 
 .card__wrapper {
@@ -21,31 +21,31 @@
   padding: 25px 20px;
 }
 
-.card__description {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 25px 20px;
-}
 .card__title {
-  font-family: "Inter", sans-serif;
-  font-size: 24px;
+  color: #000;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-style: normal;
   font-weight: 900;
+  font-size: 24px;
   line-height: 29px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  margin: 0;
+  max-width: 210px;
   overflow: hidden;
-  margin: 0;
-}
-.card__like-button {
-  border-style: none;
-  background-color: inherit;
-  margin: 0;
-  cursor: pointer;
-  transition: opacity 0.35s;
-  background: transparent url("./images/like-button-inactive.svg");
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
-.card__like-button:hover {
-  opacity: 0.5;
+.card__button {
+  background: transparent url(../images/like-button-inactive.svg) center
+    no-repeat;
+  width: 21px;
+  height: 18px;
+  border: none;
+  padding: 0;
+  transition: 0.5s;
+}
+
+.card__button:hover {
+  opacity: 50%;
+  cursor: pointer;
 }

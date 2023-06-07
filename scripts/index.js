@@ -25,76 +25,69 @@ const initialCards = [
   },
 ];
 
-/* Elements */
+//////// Dom Manipulation ////////
 
-const profileEditButton = document.querySelector(".profile__edit-button");
-const profileEditModal = document.querySelector("#profile-edit-modal");
-const profileOpenModal = document.querySelector(".modal__opened");
+/* Elements */
+const profilePopup = document.querySelector(".profile-modal");
+const profileEditButton = document.querySelector(".profile__button-edit");
+const modalExitButton = document.querySelector(".modal__exit");
+
+const modalContainer = document.querySelector(".modal__container");
 
 const profileTitle = document.querySelector(".profile__title");
-const profileDescription = document.querySelector(".profile__description");
-const profiletitleInput = document.querySelector("#modal-description-name");
-const profileDescriptionInput = document.querySelector(
-  "#modal-description-job"
-);
-const profileEditForm = profileEditModal.querySelector(".modal__form");
-const cardListEl = document.querySelector(".cards__list");
-const cardTemplate = document.querySelector("#card-template");
+const profileJob = document.querySelector(".profile__description");
+const profileFormElement = modalContainer.querySelector(".modal__input");
+const titleInput = profileFormElement.querySelector("#modal-description-name");
+const jobInput = profileFormElement.querySelector("#modal-description-job");
 
-/* functions */
+const cardListElement = document.querySelector(".cards");
+const cardTemplate =
+  document.querySelector("#card-template").content.firstElementChild;
 
-function openprofileEditModal() {
-  profileEditModal.classList.add("#profile-edit-modal");
-}
+/////////////////////////
 
-function closePopup() {
-  profileEditModal.classList.remove("#profile-edit-modal");
+/* Functions */
+const openModal = function () {
+  titleInput.value = profileTitle.textContent;
+  jobInput.value = profileJob.textContent;
+
+  profilePopup.classList.add("modal_opened");
+};
+
+const closeModal = function () {
+  profilePopup.classList.remove("modal_opened");
+};
+
+function handleProfileFormSubmit(evt) {
+  evt.preventDefault();
+
+  profileTitle.textContent = titleInput.value;
+  profileJob.textContent = jobInput.value;
+  closeModal();
 }
 
 function getCardElement(cardData) {
-  //  clone the template element with all its content and store it in a cardElement variable
   const cardElement = cardTemplate.cloneNode(true);
+  const cardImageElement = cardElement.querySelector(".card__image");
+  const cardTitleElement = cardElement.querySelector(".card__title");
+
+  cardTitleElement.textContent = cardData.name;
+  cardImageElement.src = cardData.link;
+  cardImageElement.alt = cardData.name;
+
   return cardElement;
 }
 
-function updateCardElement(cardData) {
-  //  access the card title and image and store them in variables
-  const cardImageEl = cardData.querySelector(".card__image");
-  cardData.setAttribute("alt", cardData.name);
-  const cardData = cardElement.querySelector(".card__title");
-  //  set the path to the image to the link field of the object
-  //  set the image alt text to the name field of the object
-  // !!!! ADD THE IMG ALT TEXT !!! //
-  //  set the card title to the name field of the object, too
-  cardTitleEl.textContent = cardData.name;
-  //  return the ready HTML element with the filled-in data
-}
-/* Event handlers */
-function handleProfileEditSubmit(e) {
-  e.preventDefault();
-  profileTitle.textContent = profileTitleInput.value;
-  profileDescription.textContent = profileDescriptionInput.value;
-  closePopup();
-}
+/* Event Listeners */
 
-/* Event listeners */
-profileEditButton.addEventListener("click", () => {
-  profileTitleInput.value = profileTitle.textContent;
-  profileDescriptionInput.value = profileDescription.textContent;
-  profileEditModal.classList.add(".modal__opened");
-});
+profileEditButton.addEventListener("click", openModal);
 
-profileEditModal.addEventListener("click", () => {
-  closePopup();
-});
+modalExitButton.addEventListener("click", closeModal);
 
-profileEditModal.addEventListener("submit", handleProfileEditSubmit);
+profileFormElement.addEventListener("submit", handleProfileFormSubmit);
 
 initialCards.forEach((cardData) => {
   const cardElement = getCardElement(cardData);
-  cardListEl.prepend(cardElement);
-});
-
-Array.from(cardListEl.children).forEach((cardData) => {
-  updateCardElement(cardData);
+  // return the ready HTML element with the filled-in data
+  cardListElement.append(cardElement);
 });
