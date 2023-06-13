@@ -30,11 +30,10 @@ const profilePopup = document.querySelector(".profile-modal");
 const profileEditButton = document.querySelector(".profile__button-edit");
 const profileModalExitButton = profilePopup.querySelector(".modal__exit");
 const profileModalContainer = document.querySelector(".profile-container");
-
 const profileTitle = document.querySelector(".profile__title");
 const profileJob = document.querySelector(".profile__description");
 const profileFormElement =
-  profileModalContainer.querySelector(".profile-input");
+  profileModalContainer.querySelector(".profile__input");
 const titleInput = profileFormElement.querySelector("#modal-description-name");
 const jobInput = profileFormElement.querySelector("#modal-description-job");
 
@@ -43,29 +42,28 @@ const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
 
 const cardPopup = document.querySelector(".card-modal");
-const CardAddButton = document.querySelector(".profile__button-add");
+const cardAddButton = document.querySelector(".profile__button-add");
 const cardModalExitButton = cardPopup.querySelector(".modal__exit");
-const cardFormElement = cardPopup.querySelector(".card__input");
+const cardFormElement = cardPopup.querySelector(".card-input");
 const cardTitleInput = cardFormElement.querySelector(
   "#modal-description-title"
 );
-
 const cardUrlInput = cardFormElement.querySelector("#modal-description-url");
 const imagePopupElement = document.querySelector(".image");
-const imagePopupMain = imagePopupElement.querySelector("image__main");
+const imagePopupMain = imagePopupElement.querySelector(".image__main");
 const imagePopupDescription = imagePopupElement.querySelector(
   ".image__description"
 );
+const imagePopupExit = imagePopupElement.querySelector(".image__exit");
 
-const imagePopupExit = imagePopupElement.querySelector("image__exit");
+/////////////////////////
 
-// Functions //
 function openModal(modal) {
-  modal.classList.add("modal__opened");
+  modal.classList.add("modal_opened");
 }
 
 function closeModal(modal) {
-  modal.classList.remove("modal__opened");
+  modal.classList.remove("modal_opened");
 }
 
 function renderCard(cardData, wrapper) {
@@ -99,10 +97,8 @@ function getCardElement(cardData) {
   const cardLikeButton = cardElement.querySelector(".card__button");
   const cardTrashButton = cardElement.querySelector(".card__trash-button");
 
-  // Event listeners //
-
   cardLikeButton.addEventListener("click", () => {
-    cardLikeButton.classList.toggle("card__like-active");
+    cardLikeButton.classList.toggle("card__like:active");
   });
 
   cardTrashButton.addEventListener("click", () => {

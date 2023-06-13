@@ -40,7 +40,7 @@
   text-overflow: ellipsis;
 }
 
-.card__button {
+.card__like-button {
   background: transparent url(../images/like-button-inactive.svg) center
     no-repeat;
   width: 21px;
@@ -50,10 +50,10 @@
   transition: 0.5s;
 }
 
-.card__button:hover {
+.card__like-button:hover {
   opacity: 50%;
   cursor: pointer;
-  background: transparent url(../images/like-button-active.svg) center no-repeat;
+  background: url(../images/like-button-active.svg) center no-repeat;
 }
 
 .card__trash-button {
