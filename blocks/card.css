@@ -2,12 +2,17 @@
   display: flex;
   flex-wrap: wrap;
   width: 282px;
+  position: relative;
 }
 
 .card__image {
   width: 282px;
   height: 282px;
   border-radius: 10px 10px 0 0;
+}
+
+.card__image:hover {
+  cursor: pointer;
 }
 
 .card__wrapper {
@@ -48,4 +53,21 @@
 .card__button:hover {
   opacity: 50%;
   cursor: pointer;
+  background: transparent url(../images/like-button-active.svg) center no-repeat;
+}
+
+.card__trash-button {
+  background: transparent url(../images/Trash.svg) center no-repeat;
+  position: absolute;
+  border: none;
+  padding: 0;
+  right: 15px;
+  top: 18px;
+  width: 18px;
+  height: 19px;
+}
+
+.card__trash-button:hover {
+  cursor: pointer;
+  opacity: 0.6;
 }

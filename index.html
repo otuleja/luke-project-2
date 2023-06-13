@@ -32,7 +32,7 @@
         </section>
 
         <section class="cards page__section">
-          <!-- <article class="card">
+          <article class="card">
             <img
               src="./images/yosemite-valley.jpg"
               alt="Yosemite Valley"
@@ -93,7 +93,7 @@
               <h2 class="card__title">Lago di Braies</h2>
               <button class="card__button" type="button"></button>
             </div>
-          </article> -->
+          </article>
         </section>
         <footer class="footer">
           <p class="footer__copyright">&copy; 2023 Around the U.S.</p>
@@ -102,16 +102,19 @@
     </div>
 
     <div class="modal profile-modal">
-      <section class="modal__container">
+      <section class="modal__container profile__container">
         <button class="modal__exit" type="button"></button>
         <h2 class="modal__title">Edit profile</h2>
-        <form class="modal__input">
+        <form class="modal__input profile-input">
           <input
             id="modal-description-name"
             class="modal__description"
             name="title"
             type="text"
             placeholder="Name"
+            minlength="2"
+            maxlength="40"
+            required
           />
           <input
             id="modal-description-job"
@@ -119,15 +122,57 @@
             name="job"
             type="text"
             placeholder="Description"
+            minlength="2"
+            maxlength="200"
+            required
           />
+          <span class="modal-description-job-error"></span>
           <button class="modal__button" type="submit">Save</button>
         </form>
       </section>
     </div>
 
+    <div class="modal card-modal">
+      <section class="modal-container card-container">
+        <button class="modal__exit" type="button"></button>
+        <h2 class="modal__title">New Place</h2>
+        <form class="modal__input card__input">
+          <input
+            id="modal-description-title"
+            class="modal__description"
+            name="title"
+            type="text"
+            placeholder="Title"
+            minlength="1"
+            maxlength="30"
+            required
+          />
+          <input
+            id="modal-description-url"
+            class="modal__description"
+            name="url"
+            type="url"
+            placeholder="Image url"
+            required
+          />
+          <span class="modal-description-url-error"></span>
+          <button class="modal__button" type="submit">Create</button>
+        </form>
+      </section>
+    </div>
+
+    <div class="image">
+      <section class="image__container">
+        <button class="image__exit"></button>
+        <img class="image__main" src="#" alt="#" />
+        <p class="image__description"></p>
+      </section>
+    </div>
+
     <template id="card-template">
       <article class="card">
-        <img class="card__image" src="" alt="" />
+        <button class="card__trash-button" type="button"></button>
+        <img class="card__image" src="#" alt="#" />
         <div class="card__wrapper">
           <h2 class="card__title"></h2>
           <button class="card__button" type="button"></button>
