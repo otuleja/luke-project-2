@@ -41,33 +41,35 @@
 }
 
 .card__like-button {
-  background: transparent url(../images/like-button-inactive.svg) center
-    no-repeat;
-  width: 21px;
+  background: transparent url(../images/like-inactive.svg) center no-repeat;
   height: 18px;
+  width: 21px;
   border: none;
   padding: 0;
-  transition: 0.5s;
+  transition: 0.2s;
+}
+
+.card__like-button:active {
+  background: url(../images/like-active.svg);
 }
 
 .card__like-button:hover {
-  opacity: 50%;
+  opacity: 0.5;
   cursor: pointer;
-  background: url(../images/like-button-active.svg) center no-repeat;
 }
 
-.card__trash-button {
-  background: transparent url(../images/Trash.svg) center no-repeat;
-  position: absolute;
-  border: none;
-  padding: 0;
-  right: 15px;
-  top: 18px;
+.card__delete-button {
+  background: url(../images/Trash.svg);
   width: 18px;
-  height: 19px;
+  height: 18px;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  left: 90%;
+  bottom: 90%;
+  transition: 0.5s;
 }
 
-.card__trash-button:hover {
-  cursor: pointer;
+.card__delete-button:hover {
   opacity: 0.6;
 }
