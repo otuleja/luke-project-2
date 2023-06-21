@@ -9,7 +9,6 @@
   padding: 0 19px;
   visibility: hidden;
   z-index: 999;
-  display: flex;
   opacity: 0;
   transition: visibility 0s linear 0.5s, transition 0.5s linear;
 }
@@ -29,7 +28,6 @@
   background-color: #fff;
   padding: 36px;
   border-radius: 10px;
-  position: relative;
   box-sizing: border-box;
 }
 
