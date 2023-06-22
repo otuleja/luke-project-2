@@ -53,14 +53,14 @@ const previewModalCloseButton =
 const cardAddSubmitButton = addCardModal.querySelector(".modal__button");
 
 // form data
-const nameInput = profileFormElement.querySelector(".modal__form_type_name");
+const nameInput = profileFormElement.querySelector(".modal__input_type_name");
 const jobInput = profileFormElement.querySelector(
-  ".modal__form_type_description"
+  ".modal__input_type_description"
 );
 const cardTitleInput = addCardFormElement.querySelector(
-  ".modal__form_type_title"
+  ".modal__input_type_title"
 );
-const cardUrlInput = addCardFormElement.querySelector(".modal__form_type_url");
+const cardUrlInput = addCardFormElement.querySelector(".modal__input_type_url");
 
 function closeModal(modal) {
   modal.classList.remove("modal__opened");
