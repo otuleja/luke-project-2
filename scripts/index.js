@@ -31,7 +31,7 @@ const cardTemplate = document
 
 //wrappers
 const cardsWrap = document.querySelector(".cards__list");
-const editProfileModal = document.querySelector("#profile-edit-modal");
+const editProfileModal = document.querySelector("#edit-modal");
 const addCardModal = document.querySelector("#card-edit-modal");
 const profileFormElement = editProfileModal.querySelector(".modal__form");
 const addCardFormElement = addCardModal.querySelector("#add-card-form");
@@ -63,20 +63,20 @@ const cardTitleInput = addCardFormElement.querySelector(
 const cardUrlInput = addCardFormElement.querySelector(".modal__input_type_url");
 
 function closeModal(modal) {
-  modal.classList.remove("modal__opened");
+  modal.classList.remove("modal_opened");
   document.removeEventListener("keyup", closeByEscape);
   document.removeEventListener("mousedown", closeByClick);
 }
 
 function openModal(modal) {
-  modal.classList.add("modal__opened");
+  modal.classList.add("modal_opened");
   document.addEventListener("keyup", closeByEscape);
   modal.addEventListener("mousedown", closeByClick);
 }
 
 function closeByEscape(evt) {
   if (evt.key === "Escape") {
-    const openedModal = document.querySelector(".modal__opened");
+    const openedModal = document.querySelector(".modal_opened");
 
     closeModal(openedModal);
   }
