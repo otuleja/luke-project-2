@@ -51,13 +51,13 @@
   transition: 0.2s;
 }
 
-.card__like-button_active {
-  background-image: url(../images/Union.svg);
-}
-
 .card__like-button:hover {
   opacity: 50%;
   cursor: pointer;
+}
+
+.card__like-button_active {
+  background: url(../images/Union.svg);
 }
 
 .card__delete-button {
