@@ -17,7 +17,7 @@
   visibility: visible;
   opacity: 1;
   pointer-events: all;
-  visibility: 0s, opacity 0.5s linear;
+  transition: visibility 0s, opacity 0.5s linear;
 }
 
 .modal__container {
