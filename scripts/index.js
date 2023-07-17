@@ -65,13 +65,11 @@ const cardUrlInput = addCardFormElement.querySelector(".modal__input_type_url");
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
   document.removeEventListener("keyup", closeByEscape);
-  document.removeEventListener("mousedown", closeByClick);
 }
 
 function openModal(modal) {
   modal.classList.add("modal_opened");
   document.addEventListener("keyup", closeByEscape);
-  modal.addEventListener("mousedown", closeByClick);
 }
 
 function closeByEscape(evt) {
