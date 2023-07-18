@@ -65,20 +65,12 @@ const cardUrlInput = addCardFormElement.querySelector(".modal__input_type_url");
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
   document.removeEventListener("keyup", closeByEscape);
-  }
-
-  function [#edit-modal, #card-edit-modal, #modal-preview-image].forEach((modal) => {
-    modal.removeEventListener("click", closeByClick);
-});
+}
 
 function openModal(modal) {
   modal.classList.add("modal_opened");
   document.addEventListener("keyup", closeByEscape);
 }
-
-function  [#edit-modal, #card-edit-modal, #modal-preview-image].forEach((modal) => {
-  modal.addEventListener("click", closeByClick);
-});
 
 function closeByEscape(evt) {
   if (evt.key === "Escape") {
@@ -168,5 +160,9 @@ addNewCardButton.addEventListener("click", () => openModal(addCardModal));
 addCardModalCloseButton.addEventListener("click", () =>
   closeModal(addCardModal)
 );
+
+[addCardModal].forEach((modal) => {
+  modal.addEventListener("click", closeByClick);
+});
 
 initialCards.forEach((cardData) => renderCard(cardData, cardsWrap));
