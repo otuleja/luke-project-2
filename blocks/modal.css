@@ -8,7 +8,7 @@
   padding: 0;
   visibility: none;
   pointer-events: none;
-  opacity: 0;
+  opacity: #000000;
   transition: visibility 0s 0.5s, opacity 0.5s linear;
 }
 
