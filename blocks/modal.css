@@ -1,13 +1,14 @@
 .modal {
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 999;
   display: flex;
   padding: 0;
-  visibility: none;
+  visibility: hidden;
   pointer-events: none;
   opacity: 0;
   transition: visibility 0s 0.5s, opacity 0.5s linear;
@@ -18,7 +19,6 @@
   opacity: 1;
   pointer-events: all;
   transition: visibility 0s, opacity 0.5s linear;
-  background-color: transparent;
 }
 
 .modal__container {
