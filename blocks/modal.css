@@ -128,6 +128,7 @@
   padding-bottom: 13px;
   padding-top: 15px;
   box-sizing: border-box;
+  width: 100%;
 }
 
 .modal__form {
