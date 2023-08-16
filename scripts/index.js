@@ -86,9 +86,16 @@ function closeByClick(evt, modal) {
     evt.target === evt.currentTarget ||
     evt.target.classList.contains("modal__close")
   ) {
-    closeModal(evt.target);
+    closeModal(modal);
   }
 }
+
+document.addEventListener("click", (event) => {
+  const openedModal = document.querySelector(".modal_opened");
+  if (openedModal && !event.target.closest(".modal")) {
+    closeByClick(event, openedModal);
+  }
+});
 
 function renderCard(cardData, wrapper) {
   const cardElement = getCardElement(cardData);
@@ -165,13 +172,18 @@ addCardModalCloseButton.addEventListener("click", () =>
 
 modals.forEach((modal) => {
   modal.addEventListener("mousedown", (event) => {
-    event.stopPropagation();
-  });
+    if (event.target.classList.contains("modal_opened")) {
+    closeModal(modal);
+  }
+  if (evt.target.classlist.contains(".modal__close")) {
+    closeModal(modal);
+  }
+});
 });
 
 document.addEventListener("click", (event) => {
   if (!event.target.closest(".modal")) {
-    closeByClick();
+    closeByClick(evt, modal);
   }
 });
 
