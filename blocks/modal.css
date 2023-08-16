@@ -53,7 +53,7 @@
 }
 
 .modal__error_visible {
- visibility: visible;
+  visibility: visible;
 }
 
 .modal_opened {
@@ -153,7 +153,7 @@
 }
 
 .modal__button:hover:not(:disabled) {
-  opacity 0.8;
+  opacity: 0.8;
 }
 
 .modal__button_disabled:hover {
