@@ -73,18 +73,18 @@ function openModal(modal) {
   document.addEventListener("keyup", closeByEscape);
 }
 
-function closeByEscape(evt) {
-  if (evt.key === "Escape") {
+function closeByEscape(event) {
+  if (event.key === "Escape") {
     const openedModal = document.querySelector(".modal_opened");
 
     closeModal(openedModal);
   }
 }
 
-function closeByClick(evt, modal) {
+function closeByClick(event, modal) {
   if (
-    evt.target === evt.currentTarget ||
-    evt.target.classList.contains("modal__close")
+    event.target === event.currentTarget ||
+    event.target.classList.contains("modal__close")
   ) {
     closeModal(modal);
   }
@@ -102,14 +102,14 @@ function renderCard(cardData, wrapper) {
   wrapper.prepend(cardElement);
 }
 
-function handleProfileFormSubmit(evt) {
-  evt.preventDefault();
+function handleProfileFormSubmit(event) {
+  event.preventDefault();
   profileTitle.textContent = nameInput.value;
   profileDescription.textContent = jobInput.value;
   closeModal(editProfileModal);
 }
-function handleAddCardFormSubmit(evt) {
-  evt.preventDefault();
+function handleAddCardFormSubmit(event) {
+  event.preventDefault();
   const name = cardTitleInput.value;
   const link = cardUrlInput.value;
   renderCard({ name, link }, cardsWrap);
@@ -173,17 +173,17 @@ addCardModalCloseButton.addEventListener("click", () =>
 modals.forEach((modal) => {
   modal.addEventListener("mousedown", (event) => {
     if (event.target.classList.contains("modal_opened")) {
-    closeModal(modal);
-  }
-  if (evt.target.classlist.contains(".modal__close")) {
-    closeModal(modal);
-  }
-});
+      closeModal(modal);
+    }
+    if (event.target.classList.contains("modal__close")) {
+      closeModal(modal);
+    }
+  });
 });
 
 document.addEventListener("click", (event) => {
   if (!event.target.closest(".modal")) {
-    closeByClick(evt, modal);
+    closeByClick(event, modal);
   }
 });
 
