@@ -94,6 +94,4 @@ function enableValidation(content) {
   });
 }
 
-document.addEventListener(".modal__form", function () {
-  enableValidation(config);
-});
+enableValidation(config);

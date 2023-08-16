@@ -63,14 +63,20 @@ const cardTitleInput = addCardFormElement.querySelector(
 );
 const cardUrlInput = addCardFormElement.querySelector(".modal__input_type_url");
 
+// Defining the modal varilable //
+let modal = null;
+
 function closeModal(modal) {
-  modal.classList.remove("modal_opened");
-  document.removeEventListener("keyup", closeByEscape);
+  if (modal) {
+    modal.classList.remove("modal_opened");
+    document.removeEventListener("keyup", closeByEscape);
+  }
 }
 
-function openModal(modal) {
-  modal.classList.add("modal_opened");
+function openModal(modalElement) {
+  modalElement.classList.add("modal_opened");
   document.addEventListener("keyup", closeByEscape);
+  modal = modalElement;
 }
 
 function closeByEscape(event) {
