@@ -1,23 +1,9 @@
-# Project 3: Around The U.S.
+# Project 6: Around The U.S.
 
 ### Overview
 
-- Intro
-- Figma
-- Images
+- This project allowed me to showcase my understanding of Javascript, validators, and interface with how to toggle popups and javascript uncaught errors and debugging to create a smooth fully functioning web page. A front-end application that offers users functionality, and smooth transitions between toggling the page editing popups!
 
-**Intro**
-
-This project is made so all the elements are displayed correctly on popular screen sizes. We recommend investing more time in completing this project, since it's more difficult than previous ones.
-
-**Figma**
-
-- [Link to the project on Figma](https://www.figma.com/file/ii4xxsJ0ghevUOcssTlHZv/Sprint-3%3A-Around-the-US?node-id=0%3A1)
+- [Link to the project on Figma](https://www.figma.com/file/N3zUeequnpvMX807FfYAZW/Sprint-6-Around-The-U.S.?node-id=0-1&t=88iVO80aevkZBggI-0)
 
 [Link to the project on github.io](https://luke170607.github.io/se_project_aroundtheus/)
-
-**Images**
-
-The way you'll do this at work is by exporting images directly from Figma — we recommend doing that to practice more. Don't forget to optimize them [here](https://tinypng.com/), so your project loads faster.
-
-Good luck and have fun!
