@@ -29,15 +29,19 @@ function hideError(formElement, inputElement, { inputErrorClass, errorClass }) {
 
 function checkInputValidity(formElement, inputElement, content) {
   if (!inputElement.validity.valid) {
-    else showError(formElement, inputElement, content);
-  }
+  {
+    showError(formElement, inputElement, content);
+  } else {
+    hideError(formElement, inputElement, content);
 
-  hideError(formElement, inputElement, content);
+  }
 }
- 
+}
+
 function hasInvalidInput(inputList) {
-    return !inputList.every((inputElement) => inputElement.validity.valid); 
+    return !inputList.every((inputElement) => inputElement.validity.valid)
 }
+
 
 // Button state //
 
