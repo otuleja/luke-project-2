@@ -38,23 +38,18 @@
 }
 
 .modal__error {
-  opacity: 1;
-  position: absolute;
-  top: 50px;
-  left: 0;
-  -webkit-transition: opacity 0.3s;
-  -o-transition: opacity 0.3s;
-  transition: opacity 0.3s;
-  font-family: "Inter", Arial, sans-serif;
-  font-style: normal;
-  font-weight: 400;
   font-size: 12px;
   line-height: 15px;
-  color: red;
+  color: #ff0000;
+  transition: opacity 0.3s;
+  width: 358px;
 }
 
 .modal__error_visible {
-  visibility: visible;
+  opacity: 1;
+  left: 0px;
+  top: 5px;
+  position: relative;
 }
 
 .modal_opened {
@@ -114,7 +109,6 @@
 
 .modal__input_type_error {
   border-bottom: 1px solid red;
-  top: 50px;
 }
 
 .modal__form {
