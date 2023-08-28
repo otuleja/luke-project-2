@@ -24,15 +24,21 @@
             class="profile__image"
           />
           <div class="profile__info">
-            <h1 class="profile__title">Jacques Cousteau</h1>
+            <h1 class="profile__title" id="profile-name">Jacques Cousteau</h1>
             <button class="profile__edit-button" type="button"></button>
-            <p class="profile__description">Explorer</p>
+            <p class="profile__description" id="profile-description">
+              Explorer
+            </p>
           </div>
-          <button class="profile__add-button" type="button"></button>
+          <button
+            class="profile__add-button"
+            type="button"
+            id="profile-add-button"
+          ></button>
         </section>
 
         <section class="cards page__section">
-          <ul class="cards__list"></ul>
+          <ul class="cards__list" id="cards-list"></ul>
         </section>
       </main>
       <footer class="footer page__section">
@@ -40,31 +46,31 @@
       </footer>
     </div>
 
-    <div class="modal" id="edit-modal">
-      <div class="modal__container">
+    <div class="popup" id="edit-popup">
+      <div class="popup__container">
         <button
-          class="modal__close"
+          class="popup__close"
           id="profile-close-button"
           type="button"
         ></button>
-        <h1 class="modal__heading">Edit profile</h1>
-        <form class="modal__form" id="edit-profile-form">
-          <label class="modal__label">
+        <h1 class="popup__heading">Edit profile</h1>
+        <form class="popup__form" id="edit-profile-form">
+          <label class="popup__label">
             <input
-              class="modal__input modal__input_type_name"
+              class="popup__input popup__input_type_name"
               type="text"
               name="title"
-              id="owners-name"
+              id="name-input"
               placeholder="Title"
               maxlength="40"
               minlength="2"
               required
             />
           </label>
-          <span class="modal__error" id="owners-name-error"></span>
-          <label class="modal__label">
+          <span class="popup__error" id="owners-name-error"></span>
+          <label class="popup__label">
             <input
-              class="modal__input modal__input_type_description"
+              class="popup__input popup__input_type_description"
               type="text"
               name="description"
               id="owners-description"
@@ -74,23 +80,23 @@
               required
             />
           </label>
-          <span class="modal__error" id="owners-description-error"></span>
-          <button class="modal__button" type="submit">Save</button>
+          <span class="popup__error" id="owners-description-error"></span>
+          <button class="popup__button" type="submit">Save</button>
         </form>
       </div>
     </div>
-    <div class="modal" id="card-edit-modal">
-      <div class="modal__container">
+    <div class="popup" id="add-photo-popup">
+      <div class="popup__container">
         <button
-          class="modal__close"
+          class="popup__close"
           id="card-close-button"
           type="button"
         ></button>
-        <h2 class="modal__heading">New Place</h2>
-        <form class="modal__form" id="add-card-form">
-          <label class="modal__label">
+        <h2 class="popup__heading">New Place</h2>
+        <form class="popup__form" name="image_form">
+          <label class="popup__label">
             <input
-              class="modal__input modal__input_type_title"
+              class="popup__input popup__input_type_title"
               type="text"
               name="title"
               id="image-title"
@@ -99,28 +105,28 @@
               minlength="1"
               required
             />
-            <span class="modal__error" id="image-title-error"></span>
+            <span class="popup__error" id="image-title-error"></span>
           </label>
-          <label class="modal__label">
+          <label class="popup__label">
             <input
-              class="modal__input modal__input_type_url"
+              class="popup__input popup__input_type_url"
               type="url"
               name="URL"
               id="image-url"
               placeholder="Image URL"
               required
             />
-            <span class="modal__error" id="image-url-error"></span>
+            <span class="popup__error" id="image-url-error"></span>
           </label>
-          <button class="modal__button" type="submit">Create</button>
+          <button class="popup__button" type="submit">Create</button>
         </form>
       </div>
     </div>
-    <div class="modal" id="modal-preview-image">
-      <div class="modal__preview-container">
-        <button class="modal__close" type="button"></button>
-        <img class="modal__image-preview" src="#" alt="" />
-        <p class="modal__image-title"></p>
+    <div class="popup" id="popup-preview-image">
+      <div class="popup__preview-container">
+        <button class="popup__close" type="button"></button>
+        <img class="popup__image-preview" src="#" alt="" />
+        <p class="popup__image-title"></p>
       </div>
     </div>
     <template id="card-template">
@@ -133,7 +139,6 @@
         </div>
       </li>
     </template>
-    <script src="./scripts/index.js" defer></script>
-    <script src="./scripts/validation.js" defer></script>
+    <script src="./pages/index.js" type="module"></script>
   </body>
 </html>

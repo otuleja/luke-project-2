@@ -1,4 +1,4 @@
-.modal {
+.popup {
   position: fixed;
   top: 0;
   left: 0;
@@ -16,11 +16,11 @@
   transition: visibility 0s 0.5s, opacity 0.5s linear;
 }
 
-.modal__label {
+.popup__label {
   position: relative;
 }
 
-.modal__container {
+.popup__container {
   width: 430px;
   height: 330px;
   max-width: 816px;
@@ -37,7 +37,7 @@
   position: relative;
 }
 
-.modal__error {
+.popup__error {
   font-size: 12px;
   line-height: 15px;
   color: #ff0000;
@@ -45,21 +45,21 @@
   width: 358px;
 }
 
-.modal__error_visible {
+.popup__error_visible {
   opacity: 1;
   left: 0px;
   top: 5px;
   position: relative;
 }
 
-.modal_opened {
+.popup_opened {
   visibility: visible;
   opacity: 1;
   pointer-events: all;
   transition: visibility 0s, opacity 0.5s linear;
 }
 
-.modal__close {
+.popup__close {
   background: url(../images/newplus.svg);
   background-color: transparent;
   background-repeat: no-repeat;
@@ -76,12 +76,12 @@
   transition: 0.3s;
 }
 
-.modal__close:hover {
+.popup__close:hover {
   opacity: 0.6;
   cursor: pointer;
 }
 
-.modal__heading {
+.popup__heading {
   font-family: "Inter", sans-serif;
   font-style: normal;
   font-weight: 900;
@@ -92,7 +92,7 @@
   padding-bottom: 54px;
 }
 
-.modal__input {
+.popup__input {
   font-family: "Inter", Arial, Helvetica, sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -107,21 +107,21 @@
   width: 100%;
 }
 
-.modal__input_type_error {
+.popup__input_type_error {
   border-bottom: 1px solid red;
 }
 
-.modal__form {
+.popup__form {
   display: grid;
   margin: 0 auto;
   width: 358px;
 }
 
-.modal__form-description {
+.popup__form-description {
   margin-top: 30px;
 }
 
-.modal__button {
+.popup__button {
   font-family: "Inter", Arial, Helvetica, sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -138,7 +138,7 @@
   cursor: pointer;
 }
 
-.modal__button_disabled {
+.popup__button_disabled {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   opacity: 0.2;
@@ -147,16 +147,16 @@
   cursor: default;
 }
 
-.modal__button:hover:not(:disabled) {
+.popup__button:hover:not(:disabled) {
   opacity: 0.8;
 }
 
-.modal__button_disabled:hover {
+.popup__button_disabled:hover {
   opacity: 0.2;
 }
 
 @media screen and (max-width: 630px) {
-  .modal__close {
+  .popup__close {
     width: 26px;
     height: 26px;
     top: -44.62px;
@@ -165,19 +165,19 @@
 }
 
 @media screen and (max-width: 500px) {
-  .modal__container {
+  .popup__container {
     width: 282px;
     /*
     height: 322px;*/
     padding: 25px 22px;
   }
-  .modal__heading {
+  .popup__heading {
     width: 100%;
     padding-bottom: 75px;
   }
 }
 
-.modal__image-preview {
+.popup__image-preview {
   max-width: 75vw;
   max-height: 75vh;
 }
