@@ -79,6 +79,7 @@ function handleProfileEditSubmit(event) {
   event.preventDefault();
   profileName.innerText = profileNameInput.value;
   profileDescription.innerText = profileDescriptionInput.value;
+  editFormValidator.resetValidation();
   closePopup(profileEditPopup);
 }
 
