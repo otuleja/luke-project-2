@@ -94,7 +94,7 @@ function handleAddPhotoSubmit(event) {
 }
 
 // EVENT LISTENERS //
-//rendering the cards //
+//creating the cards //
 
 initialCards.forEach((cardData) => {
   const cardElement = createCard(cardData, "#card-template");
