@@ -18,6 +18,7 @@
   font-family: "Inter";
   font-weight: 900;
   font-style: normal;
+  font-display: swap;
   src: url(./fonts/Inter-Black.woff) format("woff"),
     url(./fonts/Inter-Black.woff2) format("woff2");
 }

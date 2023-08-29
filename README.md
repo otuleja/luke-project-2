@@ -1,8 +1,10 @@
-# Project 6: Around The U.S.
+# Project 7: Around The U.S.
 
 ### Overview
 
-- This project allowed me to showcase my understanding of Javascript, validators, and interface with how to toggle popups and javascript uncaught errors and debugging to create a smooth fully functioning web page. A front-end application that offers users functionality, and smooth transitions between toggling the page editing popups!
+- This project allowed me to showcase my understanding how to refactor code in order to update and organize my Javascript into seperate modules that would allow the code to function in the same way, but using different tools. Tools such as FormValidator, Utilities, and rendering cards through Card.js. All of these are imported into the index.js file and then executed to function in that file.
+
+I thoroughly enjoyed implementing new ways to showcase functions and accesability with a more cut and clear organized approach to Javascript.
 
 - [Link to the project on Figma](https://www.figma.com/file/N3zUeequnpvMX807FfYAZW/Sprint-6-Around-The-U.S.?node-id=0-1&t=88iVO80aevkZBggI-0)
 

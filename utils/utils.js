@@ -26,4 +26,4 @@ function closePopup(popup) {
   document.removeEventListener("keydown", closeByEscape);
 }
 
-export { popups, openPopup, closePopup };
+export default Class { popups, openPopup, closePopup };

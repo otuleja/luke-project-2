@@ -47,7 +47,7 @@ const cardList = document.querySelector("#cards__list");
 const photoAddPopup = document.querySelector("#add-photo-popup");
 const PhotoAddForm = document.querySelector["image_form"];
 
-// Buttons and features //
+// Buttons //
 
 const profileEditButton = document.querySelector("profile__edit-button");
 const profileName = document.querySelector("#profile-name");
@@ -92,7 +92,6 @@ function handlePhotoAddSubmit(event) {
 }
 
 // EVENT LISTENERS //
-
 //rendering the cards //
 
 initialCardsCards.forEach((cardData) => {
@@ -113,13 +112,13 @@ profileEditButtton.addEventListener("click", function () {
 
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 
-// Save the add photo popup //
+//add photo popup  SAVE//
 
 photoAddButton.addEventListener("click", function () {
   openPopup(photoAddPopup);
 });
 
-//close the popup when clicked close button overlay //
+// Overlay for open and close popup//
 
 popups.forEach((popup) => {
   popup.addEventListener("mousedown", (event) => {
