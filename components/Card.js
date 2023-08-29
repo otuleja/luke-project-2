@@ -21,11 +21,11 @@ export default class Card {
   }
 
   _handleLikeIcon() {
-    this._likeButton.classList.toggle("card__like-button_active");
+    this._LikeButton.classList.toggle("card__like-button_active");
   }
 
   _handleDeleteCard() {
-    this._element.remove();
+    this._Element.remove();
   }
 
   _handlePreviewPicture() {
@@ -44,7 +44,7 @@ export default class Card {
 
   _setEventListeners() {
     //".card__like-button_active"
-    this._likeButton.addEventListener("click", () => {
+    this._LikeButton.addEventListener("click", () => {
       this._handleLikeIcon();
     });
 
