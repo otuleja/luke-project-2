@@ -67,12 +67,10 @@ const photoLinkInput = addPhotoPopup.querySelector("#image-url");
 
 function createCard(cardData, cardList) {
   const cardElement = new Card(cardData, cardList);
-  console.log(cardElement.getView);
   return cardElement.getView();
 }
 
 function renderCard(cardData, cardList) {
-  console.log("render", cardData, cardList);
   const cardElement = createCard(cardData, "#card-template");
   cardList.prepend(cardElement);
 }
@@ -100,7 +98,6 @@ function handleAddPhotoSubmit(event) {
 
 initialCards.forEach((cardData) => {
   const cardElement = createCard(cardData, "#card-template");
-  console.log(cardElement);
   cardList.append(cardElement);
 });
 
@@ -109,7 +106,6 @@ initialCards.forEach((cardData) => {
 profileEditButton.addEventListener("click", function () {
   profileNameInput.value = profileName.innerText;
   profileDescriptionInput.value = profileDescription.innerText;
-  editFormValidator.resetValidation();
   openPopup(profileEditPopup);
 });
 
