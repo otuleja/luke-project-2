@@ -97,7 +97,7 @@ function handleAddPhotoSubmit(event) {
 //rendering the cards //
 
 initialCards.forEach((cardData) => {
-  const cardElement = createCard(cardData, "card-template");
+  const cardElement = createCard(cardData, "#card-template");
   cardList.append(cardElement);
 });
 
