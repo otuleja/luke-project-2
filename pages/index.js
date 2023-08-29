@@ -7,27 +7,27 @@ import { popups, openPopup, closePopup } from "../utils/utils.js";
 const initialCards = [
   {
     name: "Yosemite Valley",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.svg",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
   },
   {
     name: "Lake Louise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lake-louise.svg",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lake-louise.jpg",
   },
   {
     name: "Bald Mountains",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/bald-mountains.svg",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/bald-mountains.jpg",
   },
   {
     name: "Latemar",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/latemar.svg",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/latemar.jpg",
   },
   {
     name: "Vanoise National Park",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/vanoise.svg",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/vanoise.jpg",
   },
   {
     name: "Lago di Braies",
-    link: "https://practicum-continputElementent.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.svg",
+    link: "https://practicum-continputElementent.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
   },
 ];
 
@@ -67,10 +67,12 @@ const photoLinkInput = addPhotoPopup.querySelector("#image-url");
 
 function createCard(cardData, cardList) {
   const cardElement = new Card(cardData, cardList);
+  console.log(cardElement.getView);
   return cardElement.getView();
 }
 
 function renderCard(cardData, cardList) {
+  console.log("render", cardData, cardList);
   const cardElement = createCard(cardData, "#card-template");
   cardList.prepend(cardElement);
 }
@@ -98,6 +100,7 @@ function handleAddPhotoSubmit(event) {
 
 initialCards.forEach((cardData) => {
   const cardElement = createCard(cardData, "#card-template");
+  console.log(cardElement);
   cardList.append(cardElement);
 });
 
