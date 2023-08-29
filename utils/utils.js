@@ -1,25 +1,25 @@
 const popups = document.querySelectorAll(".popup");
 
-//Close popups when pressing "escape" //
-function closeByEscape(evt) {
-  if (evt.key === "Escape") {
+// close popup when pressing escape //
+
+function closeByEscape(event) {
+  if (event.key === "Escape") {
     popups.forEach((popup) => {
-      const openedPopup = popup.classList.contains("popup_opened");
-      if (openedPopup) {
+      if (popup.classList.contains("popup_opened")) {
         closePopup(popup);
       }
     });
   }
 }
 
-//opened popup and adding escape event listener //
+// open popup and add the escape button event listener //
 
 function openPopup(popup) {
   popup.classList.add("popup_opened");
   document.addEventListener("keydown", closeByEscape);
 }
 
-// Closed popup and removing the escape event listener //
+// close popup and remove the escape button event listener //
 
 function closePopup(popup) {
   popup.classList.remove("popup_opened");

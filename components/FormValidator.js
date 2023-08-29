@@ -16,7 +16,7 @@ export default class FormValidator {
   }
 
   _hasInvalidInput() {
-    return !this._inputElements.every(
+    return this._inputElements.some(
       (inputElement) => inputElement.validity.valid
     );
   }
@@ -65,7 +65,7 @@ export default class FormValidator {
 
   _setEventListeners() {
     this._inputElements.forEach((inputElement) => {
-      inputElement.addEventListener("input", (evt) => {
+      inputElement.addEventListener("input", () => {
         this._checkInputValidity(inputElement);
         this._toggleBtnState();
       });

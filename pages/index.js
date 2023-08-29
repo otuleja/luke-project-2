@@ -1,6 +1,6 @@
-import { popups, openPopup, closePopup } from "../utils/utils.js";
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
+import { popups, openPopup, closePopup } from "../utils/utils.js";
 
 // ELEMENTS //
 
@@ -27,7 +27,7 @@ const initialCards = [
   },
   {
     name: "Lago di Braies",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.svg",
+    link: "https://practicum-continputElementent.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.svg",
   },
 ];
 
@@ -35,21 +35,21 @@ const config = {
   inputSelector: ".popup__input",
   submitButtonSelector: ".popup__button",
   inactiveButtonClass: ".popup__button_disabled",
-  inputErrorClass: "popup__input_type_error",
-  errorClass: "popup__error_visible",
+  inputErrorClass: ".popup__input_type_error",
+  errorClass: ".popup__error_visible",
 };
 
 //Wrappers //
 
 const profileEditPopup = document.querySelector("#edit-popup");
-const profileEditForm = document.querySelector["#edit-profile-form"];
-const cardList = document.querySelector("#cards__list");
+const profileEditForm = document.querySelector("#edit-profile-form");
+const cardList = document.querySelector(".cards__list");
 const addPhotoPopup = document.querySelector("#add-photo-popup");
 const addPhotoForm = addPhotoPopup.querySelector(".popup__form");
 
 // Buttons //
 
-const profileEditButton = document.querySelector("profile__edit-button");
+const profileEditButton = document.querySelector(".profile__edit-button");
 const profileName = document.querySelector("#profile-name");
 const profileDescription = document.querySelector("#profile-description");
 const profileAddButton = document.querySelector("#profile-add-button");
@@ -78,7 +78,7 @@ function renderCard(cardData, cardList) {
 function handleProfileEditSubmit(event) {
   event.preventDefault();
   profileName.innerText = profileNameInput.value;
-  profileDescription.innertext = profileDescriptionInput.value;
+  profileDescription.innerText = profileDescriptionInput.value;
   closePopup(profileEditPopup);
 }
 
@@ -90,20 +90,20 @@ function handleAddPhotoSubmit(event) {
   };
   renderCard(cardData, cardList);
   closePopup(addPhotoPopup);
-  photoAddForm.reset();
+  addPhotoForm.reset();
 }
 
 // EVENT LISTENERS //
 //rendering the cards //
 
 initialCards.forEach((cardData) => {
-  const cardElement = createCard(cardData, "#card-template");
- cardList.append(cardElement);
+  const cardElement = createCard(cardData, "card-template");
+  cardList.append(cardElement);
 });
 
 // Open edit profile popup //
 
-profileEditButtton.addEventListener("click", function () {
+profileEditButton.addEventListener("click", function () {
   profileNameInput.value = profileName.innerText;
   profileDescriptionInput.value = profileDescription.innerText;
   editFormValidator.resetValidation();
