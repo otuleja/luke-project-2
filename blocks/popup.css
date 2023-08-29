@@ -33,7 +33,7 @@
   box-sizing: border-box;
 }
 
-.modal__preview-container {
+.popup__preview-container {
   position: relative;
 }
 

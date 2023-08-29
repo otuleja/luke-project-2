@@ -34,9 +34,12 @@ export default class FormValidator {
     this._errorMessageElement = this._formElement.querySelector(
       `#${inputElement.id}-error`
     );
-    inputElement.classList.add(this._inputErrorClass);
-    this._errorMessageElement.textContent = inputElement.validationMessage;
-    this._errorMessageElement.classList.add(this._errorClass);
+
+    if (this._errorMessageElement) {
+      inputElement.classList.add(this._inputErrorClass);
+      this._errorMessageElement.textContent = inputElement.validationMessage;
+      this._errorMessageElement.classList.add(this._errorClass);
+    }
   }
 
   _hideInputError(inputElement) {

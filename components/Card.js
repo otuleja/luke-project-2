@@ -1,18 +1,33 @@
-import { openPopup } from "../utils/utils.js";
+import { openPopup, closePopup } from "../utils/utils.js";
 
 const fullPhotoPopup = document.querySelector("#popup-preview-image");
+
 const previewPhoto = fullPhotoPopup.querySelector(".popup__image-preview");
+
 const previewTitle = fullPhotoPopup.querySelector(".popup__image-title");
 
 export default class Card {
   constructor({ name, link }, cardTemplateSelector) {
-    this._Name = name;
-    this._Link = link;
+    this._name = name;
+
+    this._link = link;
+
     this._cardTemplateSelector = cardTemplateSelector;
 
+    this._element = document
+
+      .querySelector(this._cardTemplateSelector)
+
+      .content.querySelector(".card")
+
+      .cloneNode(true);
+
     this._likeButton = this._element.querySelector(".card__like-button");
+
     this._deleteButton = this._element.querySelector(".card__delete-button");
+
     this._cardImage = this._element.querySelector(".card__image");
+
     this._cardTitle = this._element.querySelector(".card__title");
   }
 
@@ -25,26 +40,34 @@ export default class Card {
   }
 
   _handlePreviewPicture() {
-    previewPhoto.src = this._Link;
+    previewPhoto.src = this._link;
+
     previewPhoto.alt = this._name;
+
     previewTitle.innerText = this._name;
+
     openPopup(fullPhotoPopup);
   }
 
   _handlePhotoPopup() {
-    previewPhoto.src = this._Link;
+    previewPhoto.src = this._link;
+
     previewPhoto.alt = this._name;
+
     previewTitle.innerText = this._name;
+
     openPopup(fullPhotoPopup);
   }
 
   _setEventListeners() {
     //".card__like-button_active"
+
     this._likeButton.addEventListener("click", () => {
       this._handleLikeIcon();
     });
 
     //".card__delete-button"
+
     this._deleteButton.addEventListener("click", () => {
       this._handleDeleteCard();
     });
@@ -57,17 +80,13 @@ export default class Card {
   getView() {
     this._setEventListeners();
 
-    const element = document
-      .querySelector(this._cardTemplateSelector)
-      .content.querySelector(".card")
-      .cloneNode(true);
-
-    // instead of the filling random variables below, you need to fill with the info an element
     this._cardImage.src = this._link;
+
     this._cardImage.alt = this._name;
+
     this._cardTitle.textContent = this._name;
 
-    return element;
+    return this._element;
   }
 }
 
