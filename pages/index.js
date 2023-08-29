@@ -7,27 +7,27 @@ import FormValidator from "../components/FormValidator.js";
 const initialCards = [
   {
     name: "Yosemite Valley",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.svg",
   },
   {
     name: "Lake Louise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lake-louise.jpg",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lake-louise.svg",
   },
   {
     name: "Bald Mountains",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/bald-mountains.jpg",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/bald-mountains.svg",
   },
   {
     name: "Latemar",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/latemar.jpg",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/latemar.svg",
   },
   {
     name: "Vanoise National Park",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/vanoise.jpg",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/vanoise.svg",
   },
   {
     name: "Lago di Braies",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.svg",
   },
 ];
 
@@ -41,11 +41,11 @@ const config = {
 
 //Wrappers //
 
-const profileEditPopup = document.querySelector("#edit-poup");
-const profileEditForm = document.forms["#edit-profile-form"];
+const profileEditPopup = document.querySelector("#edit-popup");
+const profileEditForm = document.querySelector["#edit-profile-form"];
 const cardList = document.querySelector("#cards__list");
-const photoAddPopup = document.querySelector("#add-photo-popup");
-const PhotoAddForm = document.querySelector["image_form"];
+const addPhotoPopup = document.querySelector("#add-photo-popup");
+const addPhotoForm = addPhotoPopup.querySelector(".popup__form");
 
 // Buttons //
 
@@ -65,9 +65,14 @@ const photoLinkInput = addPhotoPopup.querySelector("#image-url");
 
 // FUNCTIONS //
 
+function createCard(cardData, cardList) {
+  const cardElement = new Card(cardData, cardList);
+  return cardElement.getView();
+}
+
 function renderCard(cardData, cardList) {
-  const cardElement = new Card(cardData, "#card-template");
-  cardList.preprend(cardElement.getview());
+  const cardElement = createCard(cardData, "#card-template");
+  cardList.prepend(cardElement);
 }
 
 function handleProfileEditSubmit(event) {
@@ -77,27 +82,23 @@ function handleProfileEditSubmit(event) {
   closePopup(profileEditPopup);
 }
 
-function handlePhotoAddSubmit(event) {
-  evt.preventDefault();
+function handleAddPhotoSubmit(event) {
+  event.preventDefault();
   const cardData = {
     name: photoTitleInput.value,
     link: photoLinkInput.value,
   };
-  const submitBtn = photoAddPopup.querySelector(".popup__button");
   renderCard(cardData, cardList);
-  closePopup(photoAddPopup);
+  closePopup(addPhotoPopup);
   photoAddForm.reset();
-  submitBtn.disabled = true;
-  submitBtn.classList.add("popup__button_disabled");
 }
 
 // EVENT LISTENERS //
 //rendering the cards //
 
-initialCardsCards.forEach((cardData) => {
-  const cardElement = new Card(cardData, "#card-template");
-  console.log(cardElement);
-  cardList.append(cardElement.getview());
+initialCards.forEach((cardData) => {
+  const cardElement = createCard(cardData, "#card-template");
+ cardList.append(cardElement);
 });
 
 // Open edit profile popup //
@@ -105,6 +106,7 @@ initialCardsCards.forEach((cardData) => {
 profileEditButtton.addEventListener("click", function () {
   profileNameInput.value = profileName.innerText;
   profileDescriptionInput.value = profileDescription.innerText;
+  editFormValidator.resetValidation();
   openPopup(profileEditPopup);
 });
 
@@ -112,11 +114,16 @@ profileEditButtton.addEventListener("click", function () {
 
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 
+// open the photo popup //
+
+profileAddButton.addEventListener("click", function () {
+  addFormValidator.resetValidation();
+  openPopup(addPhotoPopup);
+});
+
 //add photo popup  SAVE//
 
-photoAddButton.addEventListener("click", function () {
-  openPopup(photoAddPopup);
-});
+addPhotoForm.addEventListener("submit", handleAddPhotoSubmit);
 
 // Overlay for open and close popup//
 
@@ -133,6 +140,6 @@ popups.forEach((popup) => {
 
 // EVENT HANDLERS //
 const editFormValidator = new FormValidator(config, profileEditForm);
-const addFormValidator = new FormValidator(config, photoAddForm);
+const addFormValidator = new FormValidator(config, addPhotoForm);
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
