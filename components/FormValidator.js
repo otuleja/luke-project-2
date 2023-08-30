@@ -22,13 +22,14 @@ export default class FormValidator {
   }
 
   _isFormValid() {
-    return !this._hasInvalidInput();
+    return !this._hasValidInput();
   }
 
   _toggleBtnState() {
     if (this._hasInvalidInput(this._inputElements)) {
       this._submitBtn.classList.add(this._inactiveButtonClass);
-      return (this._submitBtn.disabled = true);
+      this._submitBtn.disabled = true;
+      return;
     }
     this._submitBtn.classList.remove(this._inactiveButtonClass);
     this._submitBtn.disabled = false;
