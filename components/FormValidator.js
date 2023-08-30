@@ -22,7 +22,7 @@ export default class FormValidator {
   }
 
   _isFormValid() {
-    return !this._hasValidInput();
+    return this._hasValidInput();
   }
 
   _toggleBtnState() {

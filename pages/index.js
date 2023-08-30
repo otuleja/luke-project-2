@@ -125,7 +125,7 @@ profileAddButton.addEventListener("click", function () {
 
 addPhotoForm.addEventListener("submit", (event) => {
   event.preventDefault();
-  if (addFormValidator.is()) {
+  if (addFormValidator.js(isFormValid)) {
     handleAddPhotoSubmit(event);
   }
 });
