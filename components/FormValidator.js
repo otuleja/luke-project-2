@@ -16,9 +16,13 @@ export default class FormValidator {
   }
 
   _hasInvalidInput() {
-    return this._inputElements.some(
+    return this._inputElements.every(
       (inputElement) => inputElement.validity.valid
     );
+  }
+
+  _isFormValid() {
+    return !this._hasInvalidInput();
   }
 
   _toggleBtnState() {

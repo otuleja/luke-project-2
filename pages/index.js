@@ -34,8 +34,8 @@ const initialCards = [
 const config = {
   inputSelector: ".popup__input",
   submitButtonSelector: ".popup__button",
-  inactiveButtonClass: ".popup__button_disabled",
-  inputErrorClass: ".popup__input_type_error",
+  inactiveButtonClass: "popup__button_disabled",
+  inputErrorClass: "popup__input_type_error",
   errorClass: ".popup__error_visible",
 };
 
@@ -123,8 +123,12 @@ profileAddButton.addEventListener("click", function () {
 
 //add photo popup  SAVE//
 
-addPhotoForm.addEventListener("submit", handleAddPhotoSubmit);
-
+addPhotoForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  if (addFormValidator.is()) {
+    handleAddPhotoSubmit(event);
+  }
+});
 // Overlay for open and close popup//
 
 popups.forEach((popup) => {
