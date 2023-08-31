@@ -114,18 +114,6 @@ profileEditButton.addEventListener("click", function () {
   openPopup(profileEditPopup);
 });
 
-// handle popup fields error message //
-for (let i = 0; i < inputElements.length; i++) {
-  inputElements[i].addEventListener("change", (e) => {
-    // return !this._inputElements.every(
-    //   (inputElements) => inputElements.validity.valid
-    // );
-    // FormValidator(config.inputErrorClass, e.target);
-    // new FormValidator(config.inputErrorClass, e.target);
-    addFormValidator(e.target, config.errorClass);
-  });
-}
-
 // save the edit profile popup //
 
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
