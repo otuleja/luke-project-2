@@ -153,5 +153,3 @@ popup.forEach((popup) => {
     }
   });
 });
-
-editFormValidator.enableValidation();
