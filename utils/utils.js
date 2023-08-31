@@ -1,10 +1,10 @@
-const popups = document.querySelectorAll(".popup");
+const popup = document.querySelectorAll(".popup");
 
 // close popup when pressing escape //
 
 function closeByEscape(event) {
   if (event.key === "Escape") {
-    popups.forEach((popup) => {
+    popup.forEach((popup) => {
       if (popup.classList.contains("popup_opened")) {
         closePopup(popup);
       }
@@ -26,4 +26,4 @@ function closePopup(popup) {
   document.removeEventListener("keydown", closeByEscape);
 }
 
-export { popups, openPopup, closePopup };
+export { popup, openPopup, closePopup };

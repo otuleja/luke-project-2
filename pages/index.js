@@ -1,6 +1,6 @@
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
-import { popups, openPopup, closePopup } from "../utils/utils.js";
+import { popup, openPopup, closePopup } from "../utils/utils.js";
 
 // ELEMENTS //
 
@@ -32,11 +32,11 @@ const initialCards = [
 ];
 
 const config = {
-  inputSelector: ".popup__input",
-  submitButtonSelector: ".popup__button",
+  inputSelector: "popup__input",
+  submitButtonSelector: "popup__button",
   inactiveButtonClass: "popup__button_disabled",
   inputErrorClass: "popup__input_type_error",
-  errorClass: ".popup__error_visible",
+  errorClass: "popup__error_visible",
 };
 
 //Wrappers //
@@ -53,7 +53,6 @@ const profileEditButton = document.querySelector(".profile__edit-button");
 const profileName = document.querySelector("#profile-name");
 const profileDescription = document.querySelector("#profile-description");
 const profileAddButton = document.querySelector("#profile-add-button");
-
 // FORM INPUTS //
 
 const profileNameInput = profileEditPopup.querySelector("#name-input");
@@ -62,7 +61,8 @@ const profileDescriptionInput = profileEditPopup.querySelector(
 );
 const photoTitleInput = addPhotoPopup.querySelector("#image-title");
 const photoLinkInput = addPhotoPopup.querySelector("#image-url");
-
+const inputElements = document.querySelectorAll(".popup__input");
+// const inputErrorClass.textContent = inputElements.validationMessage;
 // FUNCTIONS //
 
 function createCard(cardData, cardList) {
@@ -110,6 +110,19 @@ profileEditButton.addEventListener("click", function () {
   openPopup(profileEditPopup);
 });
 
+// handle popup fields error message //
+
+for (let i = 0; i < inputElements.length; i++) {
+  inputElements[i].addEventListener("change", (e) => {
+    // return !this._inputElements.every(
+    //   (inputElements) => inputElements.validity.valid
+    // );
+    // FormValidator(config.inputErrorClass, e.target);
+    // new FormValidator(config.inputErrorClass, e.target);
+    addFormValidator(e.target, config.errorClass);
+  });
+}
+
 // save the edit profile popup //
 
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
@@ -117,21 +130,17 @@ profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 // open the photo popup //
 
 profileAddButton.addEventListener("click", function () {
-  addFormValidator.resetValidation();
+  // addFormValidator.resetValidation();
   openPopup(addPhotoPopup);
 });
 
 //add photo popup  SAVE//
 
-addPhotoForm.addEventListener("submit", (event) => {
-  event.preventDefault();
-  if (addFormValidator.js(isFormValid)) {
-    handleAddPhotoSubmit(event);
-  }
-});
+addPhotoForm.addEventListener("submit", handleAddPhotoSubmit);
+
 // Overlay for open and close popup//
 
-popups.forEach((popup) => {
+popup.forEach((popup) => {
   popup.addEventListener("mousedown", (event) => {
     if (event.target.classList.contains("popup_opened")) {
       closePopup(popup);
