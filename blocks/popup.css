@@ -10,8 +10,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  pointer-events: none;
+  visibility: visible;
   opacity: 0;
+  pointer-events: none;
   transition: visibility 0s 0.5s, opacity 0.5s linear;
 }
 

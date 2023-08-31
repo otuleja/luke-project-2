@@ -46,6 +46,10 @@ const profileEditForm = document.querySelector("#edit-profile-form");
 const cardList = document.querySelector(".cards__list");
 const addPhotoPopup = document.querySelector("#add-photo-popup");
 const addPhotoForm = addPhotoPopup.querySelector(".popup__form");
+const editFormValidator = new FormValidator(config, profileEditForm);
+const addFormValidator = new FormValidator(config, addPhotoForm);
+editFormValidator.enableValidation();
+addFormValidator.enableValidation();
 
 // Buttons //
 
@@ -111,7 +115,6 @@ profileEditButton.addEventListener("click", function () {
 });
 
 // handle popup fields error message //
-
 for (let i = 0; i < inputElements.length; i++) {
   inputElements[i].addEventListener("change", (e) => {
     // return !this._inputElements.every(
@@ -130,7 +133,7 @@ profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 // open the photo popup //
 
 profileAddButton.addEventListener("click", function () {
-  // addFormValidator.resetValidation();
+  addFormValidator.resetValidation();
   openPopup(addPhotoPopup);
 });
 
@@ -151,8 +154,4 @@ popup.forEach((popup) => {
   });
 });
 
-// EVENT HANDLERS //
-const editFormValidator = new FormValidator(config, profileEditForm);
-const addFormValidator = new FormValidator(config, addPhotoForm);
 editFormValidator.enableValidation();
-addFormValidator.enableValidation();
