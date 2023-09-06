@@ -15,6 +15,8 @@ export default class FormValidator {
     );
   }
 
+  // this?._(object) --> checks validity of the object. Doesn't crash site to check. If Object is well defined then it will return with no errors, better than console error! //
+
   _hasInvalidInput() {
     return !this._inputElements.every(
       (inputElements) => inputElements.validity.valid
