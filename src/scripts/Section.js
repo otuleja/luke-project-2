@@ -5,13 +5,13 @@ export default class Section {
     this._classSelector = document.querySelector(classSelector);
   }
 
-  addItem(element) {
-    this._classSelector.prepend(element);
-  }
-
   renderItems() {
     this._items.forEach((item) => {
       this._renderer(item);
     });
+  }
+
+  addItem(element) {
+    this._classSelector.prepend(element);
   }
 }

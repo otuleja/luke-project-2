@@ -1,9 +1,3 @@
-const fullPhotoPopup = document.querySelector("#popup-preview-image");
-
-const previewPhoto = fullPhotoPopup.querySelector(".popup__image-preview");
-
-const previewTitle = fullPhotoPopup.querySelector(".popup__image-title");
-
 export default class Card {
   constructor({ name, link }, cardTemplateSelector) {
     this._name = name;
