@@ -66,24 +66,26 @@ const cardListEl = document.querySelector(".cards__list");
 const profileAddButton = document.querySelector("#profile-add-button";)
 
 
-// popup with form
+// form initial popup- add photo form //
 const newCardPopup = new PopupWithForm(
   "#add-photo-popup",
   handleCardFormSubmit
 );
 newCardPopup.setEventListeners();
-// edit popup form
+
+// edit the popup form fields //
 const userInfo = new UserInfo(".profile__title", ".profile__description");
 const popupEditForm = new PopupWithForm("#edit-popup", (formData) => {
   userInfo.setUserInfo(formData);
   popupEditForm.close();
 });
 popupEditForm.setEventListeners();
-// popup with image
+
+// IMAGE POPUP //
 const popupImage = new PopupWithImage("#add-photo-popup");
 popupImage.setEventListeners();
 
-// section
+// section functions //
 function createCard(item) {
   const cardElement = new Card(item, "#card-template", handleImageClick);
   return cardElement.getView();
@@ -98,7 +100,7 @@ const section = new Section({
   },
 });
 
-// functions
+// FUNCTIONS //
 function handleCardFormSubmit(data) {
   const cardInput = createCard(data);
   cardListEl.prepend(cardInput);
@@ -128,14 +130,15 @@ editFormValidator.enableValidation();
 const addFormValidator = new FormValidation(validationSettings, profileAddForm);
 addFormValidator.enableValidation();
 
-//event listeners
+// event listeners //
+
 profileEditButton.addEventListener("click", () => {
   const formData = userInfo.getUserInfo();
   popupEditForm.setInputValues(formData);
   popupEditForm.open();
 });
 
-// add new card button
+// add a new card button feature //
 profileAddButton.addEventListener("click", () => {
   addFormValidator.toggleButtonState();
   newCardPopup.open();

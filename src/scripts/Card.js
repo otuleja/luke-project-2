@@ -1,86 +1,56 @@
 export default class Card {
-  constructor({ name, link }, cardTemplateSelector) {
+  constructor({ name, link }, cardSelector, handleImageClick) {
     this._name = name;
-
     this._link = link;
-
-    this._cardTemplateSelector = cardTemplateSelector;
+    this._cardSelector = cardSelector;
+    this._handleImageClick = handleImageClick;
+  }
+  _setEventListeners() {
+    
+    this._cardElement
+      .querySelector(".card__like-button")
+      .addEventListener("click", () => {
+        this._handleLikeIcon();
+      });
+    
+    this._cardElement
+      .querySelector(".card__delete-button")
+      .addEventListener("click", () => {
+        this._handleDeleteCard();
+      });
+    
+    this._cardElement
+      .querySelector(".card__image")
+      .addEventListener("click", () => {
+        this._handleImageClick({ name: this._name, link: this._link });
+      });
   }
 
   _handleLikeIcon() {
-    this._likeButton.classList.toggle("card__like-button_active");
+    this._cardElement
+      .querySelector(".card__like-button")
+      .classList.toggle("card__like-button_active");
   }
 
   _handleDeleteCard() {
-    this._element.remove();
+    this._cardElement.remove();
+    this._cardElement = null;
   }
 
-  _handlePreviewPicture() {
-    previewPhoto.src = this._link;
-
-    previewPhoto.alt = this._name;
-
-    previewTitle.innerText = this._name;
-
-    openPopup(fullPhotoPopup);
-  }
-
-  _handlePhotoPopup() {
-    previewPhoto.src = this._link;
-
-    previewPhoto.alt = this._name;
-
-    previewTitle.innerText = this._name;
-
-    openPopup(fullPhotoPopup);
-  }
-
-  _setEventListeners() {
-    //".card__like-button_active"
-
-    this._likeButton.addEventListener("click", () => {
-      this._handleLikeIcon();
-    });
-
-    //".card__delete-button"
-
-    this._deleteButton.addEventListener("click", () => {
-      this._handleDeleteCard();
-    });
-
-    this._cardImage.addEventListener("click", () => {
-      this._handlePhotoPopup();
-    });
+  _getElement() {
+    return document
+      .querySelector(this._cardSelector)
+      .content.firstElementChild.cloneNode(true);
   }
 
   getView() {
-    this._element = document
-
-      .querySelector(this._cardTemplateSelector)
-
-      .content.querySelector(".card")
-
-      .cloneNode(true);
-
-    this._likeButton = this._element.querySelector(".card__like-button");
-
-    this._deleteButton = this._element.querySelector(".card__delete-button");
-
-    this._cardImage = this._element.querySelector(".card__image");
-
-    this._cardTitle = this._element.querySelector(".card__title");
-
+    this._cardElement = this._getElement();
+    const cardTitle = this._cardElement.querySelector(".card__title");
+    const cardImage = this._cardElement.querySelector(".card__image");
+    cardImage.src = this._link;
+    cardImage.alt = this._name;
+    cardTitle.textContent = this._name;
     this._setEventListeners();
-
-    this._cardImage.src = this._link;
-
-    this._cardImage.alt = this._name;
-
-    this._cardTitle.textContent = this._name;
-
-    return this._element;
+    return this._cardElement;
   }
 }
-
-// camelCase
-// PascalCase
