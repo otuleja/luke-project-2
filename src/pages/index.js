@@ -1,145 +1,105 @@
+import { popup, openPopup, closePopup } from "../utils/utils.js";
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
-import "../pages/index.css";
+import Section from "../components/Section.js";
+import Popup from "../components/Popup.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import UserInfo from "../components/UserInfo.js";
+import {
+  initialCards,
+  config,
+  profileEditButton,
+  profileAddButton,
+} from "../utils/constants.js";
+import "./index.css";
 
-import { popup, openPopup, closePopup } from "../utils/utils.js";
+// Class instances //
+const userInfo = new UserInfo("#profile-name", "#profile-description");
+const editPopup = new PopupWithForm("#edit-popup", (object) => {
+  handleProfileEditSubmit(object);
+});
+const addPhotoPopup = new PopupWithForm("#add-photo-popup", (object) => {
+  handleAddPhotoSubmit;
+});
+const photoPopup = new PopupWithImage("#popup__preview-image");
+const section = new Section(
+  {
+    items: initialCards,
+    renderer: (cardData) => {
+      const newCard = createCard(cardData, "#card-template");
+      section.addItem(newCard);
+    },
+  },
+  ".cards__list"
+);
 
-// ELEMENTS //
+/* ----------------------- */
+/*     Form Validation     */
+/* ----------------------- */
+const formValidators = {};
+// enable validation
+const enableValidation = (config) => {
+  const formList = Array.from(document.querySelectorAll(config.formSelector));
+  formList.forEach((formElement) => {
+    const validator = new FormValidator(config, formElement);
+    // here you get the name of the form
+    const formName = formElement.getAttribute("name");
 
-const initialCards = [
-  {
-    name: "Yosemite Valley",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
-  },
-  {
-    name: "Lake Louise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lake-louise.jpg",
-  },
-  {
-    name: "Bald Mountains",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/bald-mountains.jpg",
-  },
-  {
-    name: "Latemar",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/latemar.jpg",
-  },
-  {
-    name: "Vanoise National Park",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/vanoise.jpg",
-  },
-  {
-    name: "Lago di Braies",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
-  },
-];
-
-const config = {
-  inputSelector: ".popup__input",
-  submitButtonSelector: ".popup__button",
-  inactiveButtonClass: "popup__button_disabled",
-  inputErrorClass: "popup__input_type_error",
-  errorClass: "popup__error_visible",
+    // here you store a validator by the `name` of the form
+    formValidators[formName] = validator;
+    validator.enableValidation();
+  });
 };
 
-//Wrappers //
+enableValidation(config);
 
-const profileEditPopup = document.querySelector("#edit-popup");
-const profileEditForm = document.querySelector("#edit-profile-form");
-const cardList = document.querySelector(".cards__list");
-const addPhotoPopup = document.querySelector("#add-photo-popup");
-const addPhotoForm = addPhotoPopup.querySelector(".popup__form");
-const editFormValidator = new FormValidator(config, profileEditForm);
-const addFormValidator = new FormValidator(config, addPhotoForm);
-editFormValidator.enableValidation();
-addFormValidator.enableValidation();
+/* ------------------ */
+/*      Functions     */
+/* ------------------ */
 
-// Buttons //
-
-const profileEditButton = document.querySelector(".profile__edit-button");
-const profileName = document.querySelector("#profile-name");
-const profileDescription = document.querySelector("#profile-description");
-const profileAddButton = document.querySelector("#profile-add-button");
-// FORM INPUTS //
-
-const profileNameInput = profileEditPopup.querySelector("#name-input");
-const profileDescriptionInput = profileEditPopup.querySelector(
-  "#owners-description"
-);
-const photoTitleInput = addPhotoPopup.querySelector("#image-title");
-const photoLinkInput = addPhotoPopup.querySelector("#image-url");
-const inputElements = document.querySelectorAll(".popup__input");
-// const inputErrorClass.textContent = inputElements.validationMessage;
-// FUNCTIONS //
-
-function createCard(cardData, cardList) {
-  const cardElement = new Card(cardData, cardList);
+function createCard(cardData, cardTemplate) {
+  const cardElement = new Card(cardData, cardTemplate, (cardData) => {
+    photoPopup.open(cardData);
+  });
   return cardElement.getView();
 }
 
-function renderCard(cardData, cardList) {
-  const cardElement = createCard(cardData, "#card-template");
-  cardList.prepend(cardElement);
+function handleProfileEditSubmit(object) {
+  const { name, description } = object;
+  userInfo.setUserInfo(name, description);
+  editPopup.close();
 }
 
-function handleProfileEditSubmit(event) {
-  event.preventDefault();
-  profileName.innerText = profileNameInput.value;
-  profileDescription.innerText = profileDescriptionInput.value;
-  editFormValidator.resetValidation();
-  closePopup(profileEditPopup);
-}
-
-function handleAddPhotoSubmit(event) {
-  event.preventDefault();
+function handlePhotoAddSubmit(object) {
   const cardData = {
-    name: photoTitleInput.value,
-    link: photoLinkInput.value,
+    name: object.title,
+    link: object.image,
   };
-  renderCard(cardData, cardList);
-  closePopup(addPhotoPopup);
-  addPhotoForm.reset();
+  const newCard = createCard(cardData, "#card-template");
+  section.addItem(newCard);
 }
 
-// EVENT LISTENERS //
-//creating the cards //
+// render initialcards
+section.renderItems();
 
-initialCards.forEach((cardData) => {
-  const cardElement = createCard(cardData, "#card-template");
-  cardList.append(cardElement);
+/* ----------------------- */
+/*      Event Listner      */
+/* ----------------------- */
+// eneble event listeners in each form
+editPopup.setEventListeners();
+addPopup.setEventListeners();
+photoPopup.setEventListeners();
+
+// handle the profile edit popup
+profileEditButton.addEventListener("click", () => {
+  const { name, description } = userInfo.getUserInfo();
+  editPopup.setInputValues({ name, description });
+  editPopup.open();
+  formValidators["edit_profile_form"].resetValidation();
 });
 
-// Open edit profile popup //
-
-profileEditButton.addEventListener("click", function () {
-  profileNameInput.value = profileName.innerText;
-  profileDescriptionInput.value = profileDescription.innerText;
-  openPopup(profileEditPopup);
-});
-
-// save the edit profile popup //
-
-profileEditForm.addEventListener("submit", handleProfileEditSubmit);
-
-// open the photo popup //
-
-profileAddButton.addEventListener("click", function () {
-  addFormValidator.resetValidation();
-  openPopup(addPhotoPopup);
-});
-
-//add photo popup  SAVE//
-
-addPhotoForm.addEventListener("submit", handleAddPhotoSubmit);
-
-// Overlay for open and close popup//
-
-popup.forEach((popup) => {
-  popup.addEventListener("mousedown", (event) => {
-    if (event.target.classList.contains("popup_opened")) {
-      closePopup(popup);
-    }
-    if (event.target.classList.contains("popup__close")) {
-      closePopup(popup);
-    }
-  });
+// handle the photo add popup
+addPhotoPopup.addEventListener("click", () => {
+  addPopup.open();
+  formValidators["image_form"].resetValidation();
 });
