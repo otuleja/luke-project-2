@@ -1,5 +1,3 @@
-import { openPopup, closePopup } from "../utils/utils.js";
-
 const fullPhotoPopup = document.querySelector("#popup-preview-image");
 
 const previewPhoto = fullPhotoPopup.querySelector(".popup__image-preview");
