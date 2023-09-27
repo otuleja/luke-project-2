@@ -4,17 +4,18 @@ export default class UserInfo {
     this._job = document.querySelector(jobSelector);
   }
 
+  //   returns an objkect with info on the user to display the user data within the open form/ fields //
   getUserInfo() {
-    const userInput = {
+    this._userInfo = {
       name: this._name.textContent,
       description: this._job.textContent,
     };
-    return userInput;
+    return this._userInfo;
   }
 
-
-  setUserInfo(data) {
-    this._name.textContent = data.name;
-    this._job.textContent = data.description;
+  //   intakes new user data to add onto the page //
+  setUserInfo(nameInput, jobInput) {
+    this._name.textContent = nameInput;
+    this._job.textContent = jobInput;
   }
 }
