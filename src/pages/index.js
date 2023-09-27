@@ -49,7 +49,7 @@ const enableValidation = (config) => {
     const validator = new FormValidator(config, formElement);
 
     //get the name of the form
-    const formName =formElement.getAttribute("name");
+    const formName = formElement.getAttribute("name");
 
     //stores a validator by the name of the form//
     FormValidators[formName] = validator;
@@ -65,14 +65,12 @@ enableValidation(config);
 // const cardList = document.querySelector(".cards__list"); ALREADY DECLARED, not needed
 //const addPhotoPopup = document.querySelector("#add-photo-popup"); ALREADY DECLARED, not needed
 
-
 // Buttons //
 
 // const profileName = document.querySelector("#profile-name"); ALREADY DECLARED, not needed
 //const profileDescription = document.querySelector("#profile-description"); ALREADY DECLARED, not needed
 
 // FORM INPUTS //
-
 
 // const inputErrorClass.textContent = inputElements.validationMessage;
 
@@ -87,11 +85,11 @@ function createCard(cardData, cardTemplate) {
 
 function handleProfileEditSubmit(obj) {
   const cardData = {
-    name: obj.title;
-    link: obj.image;
+    name: obj.title,
+    link: obj.image,
   };
-const newCard = createCard(cardData, "#card-template");
-section.addItem(newcard);
+  const newCard = createCard(cardData, "#card-template");
+  section.addItem(newcard);
 }
 
 // render the initial cards
@@ -114,4 +112,4 @@ profileEditButton.addEventListener("click", () => {
 profileAddButton.addEventListener("click", () => {
   addPhotoPopup.open();
   formValidators["image_form"].resetValidation();
-})
+});

@@ -1,4 +1,4 @@
-import { openPopup, closePopup } from "../utils/utils.js";
+import { openPopup, closePopup } from "./utils.js";
 
 const fullPhotoPopup = document.querySelector("#popup-preview-image");
 
@@ -48,7 +48,7 @@ export default class Card {
     this._cardImage.addEventListener("click", () => {
       this._handlePhotoPopup();
     });
-
+  }
   _setEventListeners() {
     //".card__like-button_active"
 
@@ -68,7 +68,6 @@ export default class Card {
   }
 
   getView() {
-
     this._setEventListeners();
 
     this._cardImage.src = this._link;
@@ -76,7 +75,6 @@ export default class Card {
     this._cardImage.alt = this._name;
 
     this._cardTitle.textContent = this._name;
-
 
     // return the card //
     return this._element;

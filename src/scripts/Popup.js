@@ -1,33 +1,37 @@
 export default class Popup {
-  constructor({ popupSelector }) {
-    this._popupElement = document.querySelector(popupSelector);
-    this._popupClose = this._popupElement.querySelector(".popup__close");
-    this._popupImage = document.querySelector(".popup__image-preview");
+  constructor(popupSelector) {
+    // The constructor has a single parameter, which is the popup selector.
+    this._popupEl = document.querySelector(popupSelector);
   }
+
+  // open() and close() that will open and close the popup.
   open() {
-    //opens popup
-    this._popupElement.classList.add("popup_opened");
-    document.addEventListener("keydown", this._handleEscClose);
+    this._popupEl.classList.add("popup_opened");
+    document.addEventListener("keydown", this._closeByEscape);
   }
+
   close() {
-    // closes popup
-    this._popupElement.classList.remove("popup_opened");
-    document.removeEventListener("keydown", this._handleEscClose);
+    this._popupEl.classList.remove("popup_opened");
+    console.log(this);
+    document.removeEventListener("keydown", this._closeByEscape);
   }
-  _handleEscClose = (evt) => {
-    // listens for esc button
+
+  // _handleEscClose() for closing the popup by pressing the Esc key.
+  _closeByEscape = (evt) => {
     if (evt.key === "Escape") {
       this.close();
     }
   };
+
+  // setEventListeners() that adds a event listener to close the popup when clicked overlay or close button
   setEventListeners() {
-    // close button
-    this._popupClose.addEventListener("click", () => {
-      this.close();
-    });
-    // open button for preview image
-    this._popupImage.addEventListener("click", () => {
-      this.open();
+    this._popupEl.addEventListener("mousedown", (evt) => {
+      if (evt.target.classList.contains("popup_opened")) {
+        this.close();
+      }
+      if (evt.target.classList.contains("popup__close")) {
+        this.close();
+      }
     });
   }
 }

@@ -38,4 +38,4 @@ const config = {
 const profileEditButton = document.querySelector(".profile__edit-button");
 const profileAddButton = document.querySelector("#profile-add-button");
 
-export { initialCards, config, profileEditButton, profileAddButton };
+export { config, profileEditButton, profileAddButton };
