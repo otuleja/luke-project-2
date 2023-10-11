@@ -35,6 +35,7 @@ export default class FormValidator {
     const errorMessageRedLine = this._formElement.querySelector(
       `#${inputElement.id}-redline`
     );
+
     errorMessageRedLine.classList.remove(this._inputErrorClass);
     errorMessageElement.textContent = "";
     errorMessageElement.classList.remove(this._errorClass);

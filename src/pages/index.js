@@ -29,25 +29,16 @@ import {
   profileModalForm,
 } from "../utils/constants.js";
 
-//
-// Section
-//
-
-function createCard(data) {
-  const card = new Card(data, "#card-template", handleImageClick);
-  return card.getView();
-}
-
-document.addEventListener("DOMContentLoaded", function () {
-  const cardSection = new Section(
-    { items: initialCards, renderer: createCardCard },
-    ".cards__list"
-  );
-
-  cardSection.renderItems();
-});
-
 // Form validation //
+
+const addPicPopup = new PopupWithForm("#add-popup", handleAddFormSubmit);
+addPicPopup.setEventListeners();
+
+const editProfilePopup = new PopupWithForm(
+  "#edit-popup",
+  handleEditProfileFormSubmit
+);
+editProfilePopup.setEventListeners();
 
 const editFormValidator = new FormValidator(
   validationSettings,
@@ -59,98 +50,88 @@ const addPicModalForm = addPicModal.querySelector(".popup__form");
 const addFormValidator = new FormValidator(validationSettings, addPicModalForm);
 addFormValidator.enableValidation();
 
-// User info //
+// // User info //
 
 const userInfo = new UserInfo(".profile__name", ".profile__title");
 
-// functions //
+// // functions //
 
 function handleImageClick(card) {
   const data = {
     link: card.src,
     name: card.alt,
   };
-  imagePreview.open(data);
+  //   imagePreview.open(data);
 }
 
 function handleAddFormSubmit(data) {
-  renderCard(data);
+  const element = renderCard(data);
+  cardList.append(element);
   addPicPopup.close();
 }
 
 function handleEditProfileFormSubmit(data) {
-  userInfo.setUserInfo(data);
-  // profileName.textContent = profileModalName.value;
-  // profileTitle.textContent = profileModalTitle.value;
-  console.log(data);
-  editProfilePopup.close();
+  //userInfo.setUserInfo(data);
+  //profileName.textContent = profileModalName.value;
+  //profileTitle.textContent = profileModalTitle.value;
+  //console.log(data);
+  //editProfilePopup.close();
 }
 
-//
-// EVENT LISTENERS
-//
+// //
+// // EVENT LISTENERS
+// //
 
 profileEditBtn.addEventListener("click", () => {
+  console.log("click");
   const data = userInfo.getUserInfo();
+  console.log(data);
   profileModalName.value = data.name;
   profileModalTitle.value = data.about;
   editFormValidator.resetValidation();
   editProfilePopup.open();
 });
 
-profileModalCloseBtn.addEventListener("click", () => {
-  editProfilePopup.close();
-});
+// profileModalCloseBtn.addEventListener("click", () => {
+//   editProfilePopup.close();
+// });
 
 addPicBtn.addEventListener("click", () => {
-  addFormValidator.resetValidation();
+  console.log("click");
+  //addFormValidator.resetValidation(); Still need to take a look at form validation functionality
   addPicPopup.open();
 });
 
-addPicModalCloseBtn.addEventListener("click", () => {
-  addPicPopup.close();
-});
+// addPicModalCloseBtn.addEventListener("click", () => {
+//   addPicPopup.close();
+// });
 
 addPicModalForm.addEventListener("submit", handleAddFormSubmit);
 
-imageModalCloseBtn.addEventListener("click", () => {
-  imagePreview.close();
-});
+// imageModalCloseBtn.addEventListener("click", () => {
+//   imagePreview.close();
+// });
 
-//
-// PopupWithForm
-//
+// //
+// // PopupWithImage
+// //
 
-const addPicPopup = new PopupWithForm("#add-popup", handleAddFormSubmit);
-addPicPopup.setEventListeners();
+// const imagePreview = new PopupWithImage("#popup-image");
+// imagePreview.setEventListeners();
 
-const editProfilePopup = new PopupWithForm(
-  "#edit-modal",
-  handleEditProfileFormSubmit
-);
-editProfilePopup.setEventListeners();
+// //
+// // Section
+// //
 
-//
-// PopupWithImage
-//
-
-const imagePreview = new PopupWithImage("#popup-image");
-imagePreview.setEventListeners();
-
-//
-// Section
-//
-
-function createCard(data) {
+function renderCard(data) {
+  console.log(data);
   const card = new Card(data, "#card-template", handleImageClick);
   return card.getView();
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-  const cardSection = new Section(
-    { items: initialCards, renderer: createCardCard },
-    ".cards__list"
-  );
+//const cardSection = new Section(
+//{ items: initialCards, renderer: renderCard },
+//  ".cards__list"
+//);
 
-  cardSection.renderItems();
-});
+// cardSection.renderItems();
