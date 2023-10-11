@@ -40,7 +40,7 @@ export const imageModal = document.querySelector("#popup-image");
 export imageModalCloseBtn = imageModal.querySelector(".modal__close");
 export const cardList = document.querySelector(".cards__list");
 
-export const config = {
+export const validationSettings = {
   formSelector: ".popup__form"
   inputSelector: ".popup__input",
   submitButtonSelector: ".popup__button",
@@ -49,4 +49,4 @@ export const config = {
   errorClass: "popup__error_visible",
 };
 
-export const profileModalForm = profileEditModal(".popup__form");
+export const profileModalForm = profileEditModal.querySelector(".popup__form");

@@ -2,114 +2,135 @@ import "./index.css";
 
 // import all the classes //
 
-import Card from "../scripts/Card";
-import FormValidator from "../scripts/FormValidator";
-import Popup from "../scripts/Popup";
-import PopupWithForm from "../scripts/PopupWithForm";
-import UserInfo from "../scripts/UserInfo";
-import Section from "../scripts/Section";
+import Card from "../components/Card";
+import FormValidator from "../components/FormValidator";
+import Popup from "../components/Popup";
+import PopupWithForm from "../components/PopupWithForm";
+import PopupWithImage from "../components/PopupWithImage";
+import Section from "../components/Section";
+import UserInfo from "../components/UserInfo";
+
 import {
   initialCards,
-  config,
-  profileEditButton,
-  profileAddButton,
-} from "../scripts/constants";
-import PopupWithImage from "../scripts/PopupWithImage";
-
-// class Instances //
-const userInfo = new UserInfo("#profile-name", "#profile-description");
-const profileEditPopup = new PopupWithForm("#edit-popup", (obj) => {
-  handleProfileEditSubmit(obj);
-});
-
-const addPhotoPopup = new PopupWithForm("#add-photo-popup", (obj) => {
-  handleAddPhotoSubmit(obj);
-});
-const fullPhotoPopup = new PopupWithImage("#popup-preview-image");
-const section = new Section(
-  {
-    items: initialCards,
-    renderer: (cardData) => {
-      const newCard = createCard(cardData, "#card-template");
-      section.addItem(newCard);
-    },
-  },
-  ".cards__list"
-);
+  profileEditBtn,
+  profileEditModal,
+  profileModalCloseBtn,
+  profileModalName,
+  profileModalTitle,
+  profileName,
+  profileTitle,
+  addPicBtn,
+  addPicModal,
+  addPicModalCloseBtn,
+  imageModal,
+  imageModalCloseBtn,
+  cardList,
+  validationSettings,
+  profileModalForm,
+} from "../utils/constants";
 
 // Form validation //
 
-const FormValidators = {};
+const editFormValidator = new FormValidator(
+  validationSettings,
+  profileModalForm
+);
+editFormValidator.enableValidation();
 
-// enable validations //
+const addPicModalForm = addPicModal.querySelector(".popup__form");
+const addFormValidator = new FormValidator(validationSettings, addPicModalForm);
+addFormValidator.enableValidation();
 
-const enableValidation = (config) => {
-  const formList = Array.from(document.querySelectorAll(config.formSelector));
-  formList.forEach((formElement) => {
-    const validator = new FormValidator(config, formElement);
+// User info //
 
-    //get the name of the form
-    const formName = formElement.getAttribute("name");
+const userInfo = new UserInfo(".profile__name", ".profile__title");
 
-    //stores a validator by the name of the form//
-    FormValidators[formName] = validator;
-    validator.enableValidation();
-  });
-};
+// functions //
 
-enableValidation(config);
-
-//Wrappers //
-
-// const profileEditPopup = document.querySelector("#edit-popup"); ALREADY DECLARED, not needed
-// const cardList = document.querySelector(".cards__list"); ALREADY DECLARED, not needed
-//const addPhotoPopup = document.querySelector("#add-photo-popup"); ALREADY DECLARED, not needed
-
-// Buttons //
-
-// const profileName = document.querySelector("#profile-name"); ALREADY DECLARED, not needed
-//const profileDescription = document.querySelector("#profile-description"); ALREADY DECLARED, not needed
-
-// FORM INPUTS //
-
-// const inputErrorClass.textContent = inputElements.validationMessage;
-
-// FUNCTIONS //
-
-function createCard(cardData, cardTemplate) {
-  const cardElement = new Card(cardData, cardTemplate, (cardData) => {
-    fullPhotoPopup.open(cardData);
-  });
-  return cardElement.getView();
-}
-
-function handleProfileEditSubmit(obj) {
-  const cardData = {
-    name: obj.title,
-    link: obj.image,
+function handleImageClick(card) {
+  const data = {
+    link: card.src,
+    name: card.alt,
   };
-  const newCard = createCard(cardData, "#card-template");
-  section.addItem(newcard);
+  imagePreview.open(data);
 }
 
-// render the initial cards
-section.renderItems();
+function handleAddFormSubmit(data) {
+  renderCard(data);
+  addPicPopup.close();
+}
 
-// Event Listeners//
-profileEditPopup.setEventListeners();
-addPhotoPopup.setEventListeners();
-fullPhotoPopup.setEventListeners();
+function handleEditProfileFormSubmit(data) {
+  userInfo.setUserInfo(data);
+  // profileName.textContent = profileModalName.value;
+  // profileTitle.textContent = profileModalTitle.value;
+  console.log(data);
+  editProfilePopup.close();
+}
 
-//handle the profile edit popup
-profileEditButton.addEventListener("click", () => {
-  const { name, description } = userInfo.getUserInfo();
-  profileEditPopup.setInputValues({ name, description });
-  profileEditPopup.open();
-  formValidators["edit_profile_form"].resetValidation();
+//
+// EVENT LISTENERS
+//
+
+profileEditBtn.addEventListener("click", () => {
+  const data = userInfo.getUserInfo();
+  profileModalName.value = data.name;
+  profileModalTitle.value = data.about;
+  editFormValidator.resetValidation();
+  editProfilePopup.open();
 });
 
-//handle the photo add popup //
-profileAddButton.addEventListener("click", () => {
-  addPhotoPopup.open();
-  formValidators["image_form"].resetValidation();
+// profileModalCloseBtn.addEventListener("click", () => {
+//   editProfilePopup.close();
+// });
+
+addPicBtn.addEventListener("click", () => {
+  addFormValidator.resetValidation();
+  addPicPopup.open();
 });
+
+// addPicModalCloseBtn.addEventListener("click", () => {
+//   addPicPopup.close();
+// });
+
+// addPicModalForm.addEventListener("submit", handleAddFormSubmit);
+
+imageModalCloseBtn.addEventListener("click", () => {
+  imagePreview.close();
+});
+
+//
+// PopupWithForm
+//
+
+const addPicPopup = new PopupWithForm("#add-modal", handleAddFormSubmit);
+addPicPopup.setEventListeners();
+
+const editProfilePopup = new PopupWithForm(
+  "#edit-modal",
+  handleEditProfileFormSubmit
+);
+editProfilePopup.setEventListeners();
+
+//
+// PopupWithImage
+//
+
+const imagePreview = new PopupWithImage("#popup-image");
+imagePreview.setEventListeners();
+
+//
+// Section
+//
+
+function renderCard(data) {
+  const card = new Card(data, "#card-template", handleImageClick);
+  cardSection.addItem(card.getView());
+}
+
+const cardSection = new Section(
+  { items: initialCards, renderer: renderCard },
+  ".cards__list"
+);
+
+cardSection.renderItems();
