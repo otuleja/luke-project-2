@@ -26,11 +26,9 @@
             class="profile__image"
           />
           <div class="profile__info">
-            <h1 class="profile__title" id="profile-name">Jacques Cousteau</h1>
+            <h1 class="profile__name" id="profile-name">Jacques Cousteau</h1>
             <button class="profile__edit-button" type="button"></button>
-            <p class="profile__description" id="profile-description">
-              Explorer
-            </p>
+            <p class="profile__title" id="profile-description">Explorer</p>
           </div>
           <button
             class="profile__add-button"
@@ -90,7 +88,7 @@
         </form>
       </div>
     </div>
-    <div class="popup" id="add-photo-popup">
+    <div class="popup" id="add-popup">
       <div class="popup__container">
         <button
           class="popup__close"
@@ -101,7 +99,7 @@
         <form class="popup__form" name="image_form">
           <label class="popup__label">
             <input
-              class="popup__input popup__input_type_title"
+              class="popup__input popup__name"
               type="text"
               name="title"
               id="image-title"
@@ -127,7 +125,7 @@
         </form>
       </div>
     </div>
-    <div class="popup" id="popup-preview-image">
+    <div class="popup" id="popup-image">
       <div class="popup__preview-container">
         <button class="popup__close" type="button"></button>
         <img class="popup__image-preview" src="#" alt="" />
