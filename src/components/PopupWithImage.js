@@ -3,11 +3,12 @@ import Popup from "./Popup.js";
 export default class PopupWithImage extends Popup {
   constructor(popupSelector) {
     super({ popupSelector });
+    console.log("popup element", this._popupElement)
     this._imageElement = this._popupElement.querySelector(
-      ".popup__image-title"
+      ".popup__image-preview"
     );
     this._imageCaption = this._popupElement.querySelector(
-      ".popup__preview-image"
+      ".popup__image-caption"
     );
   }
 
