@@ -136,3 +136,21 @@ editProfilePopup.setEventListeners();
 
 const imagePreview = new PopupWithImage("#popup-image");
 imagePreview.setEventListeners();
+
+//
+// Section
+//
+
+function createCard(data) {
+  const card = new Card(data, "#card-template", handleImageClick);
+  return card.getView();
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  const cardSection = new Section(
+    { items: initialCards, renderer: createCardCard },
+    ".cards__list"
+  );
+
+  cardSection.renderItems();
+});
