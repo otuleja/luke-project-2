@@ -83,9 +83,7 @@ function handleEditProfileFormSubmit(data) {
 // //
 
 profileEditBtn.addEventListener("click", () => {
-  console.log("click");
   const data = userInfo.getUserInfo();
-  console.log(data);
   profileModalName.value = data.name;
   profileModalTitle.value = data.about;
   editFormValidator.resetValidation();
@@ -97,7 +95,6 @@ profileEditBtn.addEventListener("click", () => {
 // });
 
 addPicBtn.addEventListener("click", () => {
-  console.log("click");
   //addFormValidator.resetValidation(); Still need to take a look at form validation functionality
   addPicPopup.open();
 });
@@ -124,14 +121,16 @@ addPicModalForm.addEventListener("submit", handleAddFormSubmit);
 // //
 
 function renderCard(data) {
-  console.log(data);
+  // console.log(data);
   const card = new Card(data, "#card-template", handleImageClick);
-  return card.getView();
+  // return card.getView();
+  const element = card.getView();
+  cardList.prepend(element);
 }
 
-//const cardSection = new Section(
-//{ items: initialCards, renderer: renderCard },
-//  ".cards__list"
-//);
+const cardSection = new Section(
+  { items: initialCards, renderer: renderCard },
+  ".cards__list"
+);
 
-// cardSection.renderItems();
+cardSection.renderItems();
