@@ -163,3 +163,29 @@
 .popup__error_visible {
   opacity: 1;
 }
+
+@media screen and (max-width: 680px) {
+  .popup__close {
+    top: -53px;
+    right: 0;
+    height: 26px;
+    width: 26px;
+  }
+
+  .popup__container {
+    padding: 25px 22px 25px;
+  }
+
+  .popup__text-underline:last-of-type {
+    margin-bottom: 45px;
+  }
+
+  .popup__heading {
+    margin-bottom: 75px;
+    font-size: 18px;
+  }
+
+  .popup__button {
+    font-size: 14px;
+  }
+}

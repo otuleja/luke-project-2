@@ -29,7 +29,7 @@
             class="profile__picture"
           />
           <div class="profile__info">
-            <h1 class="profile__name" id="profile-name">Jacques Cousteau</h1>
+            <h1 class="profile__name">Jacques Cousteau</h1>
             <button
               class="profile__edit-button"
               id="edit-modal-open-button"
@@ -44,10 +44,16 @@
             <p class="profile__title">Explorer</p>
           </div>
           <button
-            class="profile__add-button"
-            type="button"
-            id="add-modal-open-button"
-          ></button>
+          type="button"
+          class="profile__add-button"
+          id="add-modal-open-button"
+          >
+          <img
+            class="profile__add-button-picture"
+            src="<%=require('./images/add-icon.svg')%>"
+            alt=""
+          ></img>
+        </button>
         </section>
 
         <section class="cards page__section">
@@ -76,12 +82,11 @@
               name="name"
               id="username"
               placeholder="Name"
-              -
               maxlength="40"
               minlength="2"
               required
             />
-            <div class="popup__text-underline" id="redline">
+            <div class="popup__text-underline" id="username-redline">
               <span class="popup__error" id="username-error">test</span>
             </div>
 
@@ -95,9 +100,8 @@
               minlength="2"
               required
             />
-          </label>
 
-          <div class="popup__text-underline" id="redline">
+          <div class="popup__text-underline" id="description-redline">
           <span class="popup__error" id="description-error">test</span>
         </div>
           <button class="popup__button" type="submit">Save
@@ -120,7 +124,7 @@
               class="popup__input popup__name popup__image-name"
               type="text"
               name="title"
-              id="image-title"
+              id="image-name"
               placeholder="Title"
               maxlength="30"
               minlength="1"
@@ -140,7 +144,7 @@
             />
 
             <div class="popup__text-underline" id="image-link-redline">
-            <span class="popup__error" id="image-url-error">test</span>
+            <span class="popup__error" id="image-link-error">test</span>
           </div>
 
           <button disabled class="popup__button popup__button_disabled" type="submit">Create
@@ -156,16 +160,21 @@
         <p class="popup__image-caption"></p>
       </div>
     </div>
+
     <template id="card-template">
       <li class="card">
-        <button class="card__delete-button" type="button"></button>
         <img
           class="card__image"
           src="%=require('./images/jacques-cousteau.jpg')%"
           alt="placeholder"
         />
+        <img
+        class="card__delete-button"
+        src="%=require('./images/Trash.svg')%>"
+        alt="delete button"
+        />
         <div class="card__description">
-          <h3 class="card__title"></h3>
+          <h2 class="card__title"></h2>
           <button class="card__like-button" type="button"></button>
         </div>
       </li>

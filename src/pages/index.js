@@ -27,7 +27,25 @@ import {
   cardList,
   validationSettings,
   profileModalForm,
-} from "../utils/constants";
+} from "../utils/constants.js";
+
+//
+// Section
+//
+
+function createCard(data) {
+  const card = new Card(data, "#card-template", handleImageClick);
+  return card.getView();
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  const cardSection = new Section(
+    { items: initialCards, renderer: createCardCard },
+    ".cards__list"
+  );
+
+  cardSection.renderItems();
+});
 
 // Form validation //
 
@@ -80,20 +98,20 @@ profileEditBtn.addEventListener("click", () => {
   editProfilePopup.open();
 });
 
-// profileModalCloseBtn.addEventListener("click", () => {
-//   editProfilePopup.close();
-// });
+profileModalCloseBtn.addEventListener("click", () => {
+  editProfilePopup.close();
+});
 
 addPicBtn.addEventListener("click", () => {
   addFormValidator.resetValidation();
   addPicPopup.open();
 });
 
-// addPicModalCloseBtn.addEventListener("click", () => {
-//   addPicPopup.close();
-// });
+addPicModalCloseBtn.addEventListener("click", () => {
+  addPicPopup.close();
+});
 
-// addPicModalForm.addEventListener("submit", handleAddFormSubmit);
+addPicModalForm.addEventListener("submit", handleAddFormSubmit);
 
 imageModalCloseBtn.addEventListener("click", () => {
   imagePreview.close();
@@ -118,19 +136,3 @@ editProfilePopup.setEventListeners();
 
 const imagePreview = new PopupWithImage("#popup-image");
 imagePreview.setEventListeners();
-
-//
-// Section
-//
-
-function renderCard(data) {
-  const card = new Card(data, "#card-template", handleImageClick);
-  cardSection.addItem(card.getView());
-}
-
-const cardSection = new Section(
-  { items: initialCards, renderer: renderCard },
-  ".cards__list"
-);
-
-cardSection.renderItems();

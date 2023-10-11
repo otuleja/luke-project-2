@@ -8,27 +8,6 @@
   position: relative;
 }
 
-.card__image {
-  width: 282px;
-  height: 282px;
-  border-radius: 10px 10px 0 0;
-}
-
-.card__image:hover {
-  cursor: pointer;
-}
-
-.card__description {
-  box-sizing: border-box;
-  width: 100%;
-  display: flex;
-  background-color: #fff;
-  justify-content: space-between;
-  align-items: center;
-  border-radius: 0 0 10px 10px;
-  padding: 25px 20px;
-}
-
 .card__title {
   max-width: 220px;
   font-size: 24px;
@@ -40,15 +19,42 @@
   margin: 0;
 }
 
-.card__like-button {
-  background: transparent url(../images/like-button-inactive.svg) center
-    no-repeat;
-  height: 18px;
-  width: 21px;
+.card__image {
+  width: 282px;
+  height: 282px;
+}
+
+.card__image:hover {
   cursor: pointer;
+}
+
+.card__delete-button {
+  position: absolute;
+  top: 18px;
+  right: 15px;
+  height: 19px;
+  width: 18px;
+  background-color: transparent;
+}
+
+.card__description {
+  display: flex;
+  background-color: white;
+  justify-content: space-between;
+  color: #000;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 24px;
+  font-weight: 900;
+  padding: 25px 20px 25px;
+}
+
+.card__like-button {
+  background: transparent url(../images/like-button-inactive.svg) center;
+  width: 21px;
+  height: 19px;
   border-style: none;
-  border: none;
   background-size: 21px 18px;
+  border: none;
   margin: auto 0 auto 0;
   padding: 0;
 }
@@ -60,22 +66,4 @@
 
 .card__like-button_active {
   background: url(../images/Union.svg);
-}
-
-.card__delete-button {
-  background: url(../images/Trash.svg) center no-repeat;
-  position: absolute;
-  top: 18px;
-  right: 15px;
-  width: 18px;
-  height: 19px;
-  border-style: none;
-  -webkit-transition: opacity 0.5s ease-in-out;
-  -o-transition: opacity 0.5s ease-in-out;
-  transition: opacity 0.5s ease-in-out;
-}
-
-.card__delete-button:hover {
-  cursor: pointer;
-  opacity: 0.6;
 }
