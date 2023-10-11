@@ -1,7 +1,10 @@
 .card {
+  font-family: "Inter", Arial, sans-serif;
+  border-radius: 10px;
+  overflow: hidden;
   display: flex;
-  flex-wrap: wrap;
-  width: 282px;
+  flex-direction: column;
+  margin: 0;
   position: relative;
 }
 
@@ -27,17 +30,14 @@
 }
 
 .card__title {
-  color: #000;
-  font-family: "Inter", Arial, Helvetica, sans-serif;
-  font-style: normal;
-  font-weight: 900;
+  max-width: 220px;
   font-size: 24px;
+  font-weight: 900;
   line-height: 29px;
-  margin: 0;
-  max-width: 210px;
-  overflow: hidden;
-  white-space: nowrap;
   text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  margin: 0;
 }
 
 .card__like-button {
@@ -46,13 +46,15 @@
   height: 18px;
   width: 21px;
   cursor: pointer;
+  border-style: none;
   border: none;
+  background-size: 21px 18px;
+  margin: auto 0 auto 0;
   padding: 0;
-  transition: 0.2s;
 }
 
 .card__like-button:hover {
-  opacity: 50%;
+  opacity: 0.5;
   cursor: pointer;
 }
 

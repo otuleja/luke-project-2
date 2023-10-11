@@ -103,7 +103,7 @@ imageModalCloseBtn.addEventListener("click", () => {
 // PopupWithForm
 //
 
-const addPicPopup = new PopupWithForm("#add-modal", handleAddFormSubmit);
+const addPicPopup = new PopupWithForm("#add-popup", handleAddFormSubmit);
 addPicPopup.setEventListeners();
 
 const editProfilePopup = new PopupWithForm(

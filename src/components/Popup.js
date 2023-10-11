@@ -1,5 +1,5 @@
 export default class Popup {
-  constructor({popupSelector}) 
+  constructor({ popupSelector }) {
     this._popupElement = document.querySelector(popupSelector);
     this._closeButton = this._popupElement.querySelector(".popup__close");
   }
@@ -38,3 +38,4 @@ export default class Popup {
     });
     // I didnt have this as an arrow function and it wasn't working.......... ^^^
   }
+}

@@ -26,22 +26,23 @@ export const initialCards = [
 ];
 // buttons//
 
- export const profileEditBtn = document.querySelector(".profile__edit-button");
+export const profileEditBtn = document.querySelector(".profile__edit-button");
 export const profileEditModal = document.querySelector("#edit-popup");
-export profileModalCloseBtn = profileEditModal.querySelector(".popup__close");
+export const profileModalCloseBtn =
+  profileEditModal.querySelector(".popup__close");
 export const profileModalName = document.querySelector(".popup__name");
 export const profileModalTitle = document.querySelector(".popup__title");
 export const profileName = document.querySelector(".profile__name");
 export const profileTitle = document.querySelector(".profile__title");
 export const addPicModal = document.querySelector("#add-popup");
 export const addPicBtn = document.querySelector(".profile__add-button");
-export addPicModalCloseBtn = document.querySelector(".modal__close");
+export const addPicModalCloseBtn = document.querySelector(".modal__close");
 export const imageModal = document.querySelector("#popup-image");
-export imageModalCloseBtn = imageModal.querySelector(".modal__close");
+export const imageModalCloseBtn = imageModal.querySelector(".modal__close");
 export const cardList = document.querySelector(".cards__list");
 
 export const validationSettings = {
-  formSelector: ".popup__form"
+  formSelector: ".popup__form",
   inputSelector: ".popup__input",
   submitButtonSelector: ".popup__button",
   inactiveButtonClass: "popup__button_disabled",
