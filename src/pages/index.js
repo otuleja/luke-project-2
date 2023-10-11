@@ -65,6 +65,10 @@ function handleImageClick(card) {
 }
 
 function handleAddFormSubmit(data) {
+  console.log("data", data)
+  // if (!data.name && data.title) {
+  //   data.name = data.title
+  // }
   const element = renderCard(data);
   cardList.append(element);
   addPicPopup.close();
@@ -103,7 +107,7 @@ addPicBtn.addEventListener("click", () => {
 //   addPicPopup.close();
 // });
 
-addPicModalForm.addEventListener("submit", handleAddFormSubmit);
+// addPicModalForm.addEventListener("submit", handleAddFormSubmit);
 
 // imageModalCloseBtn.addEventListener("click", () => {
 //   imagePreview.close();
